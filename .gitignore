@@ -6,3 +6,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+VinculacionLaboral/mysql-connector.jar
+VinculacionLaboral/build.xml
+*.xml
