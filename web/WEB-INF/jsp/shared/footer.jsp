@@ -1,9 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : 16/02/2019, 09:34:15 AM
-    Author     : andres
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <footer class="col-12 footer font-small blue">

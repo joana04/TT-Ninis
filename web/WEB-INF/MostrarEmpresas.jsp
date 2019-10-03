@@ -1,4 +1,3 @@
-<%@page import="com.ipn.mx.modeloDAO.EmpresaDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -15,7 +14,6 @@
             <div class="container animated fadeIn delay-100ms" >
                 <div class="row">
                     <div class="col-12">
-                        <% EmpresaDAO ed=new EmpresaDAO();%>
                         <table class='table table-hover'>
                             <tr class='table-light'>
                                 <th scope='col'>RFC</th>
@@ -24,16 +22,16 @@
                                 <th scope='col'>Número de empleados</th>
                                 <th scope='col'>Acciones</th>
                             </tr>
-                            <c:forEach var="e" items="<%= ed.findAll()%>">
+                            <c:forEach var="e" items="${Empresas}">
                                 <tr>
-                                    <td>${e.getRfc()}</td>
-                                    <td>${e.getNombreEmpresa()}</td>
-                                    <td>${e.getGiro()}</td>
-                                    <td>${e.getNumeroEmpleados()}</td>
+                                    <td><c:out value="${e.getRfc()}"></c:out></td>
+                                    <td><c:out value="${e.getNombreEmpresa()}"></c:out></td>
+                                    <td><c:out value="${e.getGiro()}"></c:out></td>
+                                    <td><c:out value="${e.getNumeroEmpleados()}"></c:out></td>
                                     <td>
-                                        <a class='btn btn-outline-info btn-sm' href="MostrarEmpresa.jsp?id=${e.getRfc()}"> <span class='pe-7s-info'></span> </a>
-                                        <a class='btn btn-outline-info btn-sm' href="EditarEmpresa.jsp?id=${e.getRfc()}"> <span class='pe-7s-pen'></span> </a>
-                                        <a class='btn btn-outline-danger btn-sm btnEliminarCarrera txt-white' href="EliminarEmpresa?id=${e.getRfc()}"> <span class='pe-7s-trash'></span> </a>
+                                        <a class='btn btn-outline-info btn-sm' href="MostrarEmpresa.htm?id=${e.getRfc()}"> <span class='pe-7s-info'></span> </a>
+                                        <a class='btn btn-outline-info btn-sm' href="EditarEmpresa.htm?id=${e.getRfc()}"> <span class='pe-7s-pen'></span> </a>
+                                        <a class='btn btn-outline-danger btn-sm btnEliminarCarrera txt-white' href="deleteEmpresa.htm?id=${e.getRfc()}"> <span class='pe-7s-trash'></span> </a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -47,7 +45,7 @@
         </div>
         <script>
             function redirect() {
-              document.location.replace("agregarEmpresa.jsp");
+              document.location.replace("AgregarEmpresa.htm");
             }
         </script>
         <!-- footer -->
