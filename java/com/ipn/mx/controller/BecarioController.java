@@ -11,41 +11,73 @@ import com.ipn.mx.model.dto.Discapacidades;
 import com.ipn.mx.model.dto.Gradoestudios;
 import com.ipn.mx.model.dto.Usuario;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @SessionAttributes("becario")
 public class BecarioController {
     @RequestMapping(value = "/InicioBecario", method = RequestMethod.GET)
-    public ModelAndView inicioBecario(Becario becario) {
+    public ModelAndView inicioBecario(Becario becario, HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        try {
-            mv.setViewName("InicioBecario");
+        try {   
+            session.setAttribute("becario", becario);
+            /* Obtiene discapacidades */
             DiscapacidadDAO daoDiscapacidad = new DiscapacidadDAO();
             Discapacidades d = new Discapacidades();
-            d.setIdDiscapacidad(becario.getDiscapacidades().getIdDiscapacidad());
-            d=daoDiscapacidad.find(d);
-            mv.addObject("discapacidadNombre",d.getNombreDiscapacidad());
+            d=daoDiscapacidad.find(becario.getDiscapacidades());
+            becario.setDiscapacidades(d);
+            System.out.println(d.getNombreDiscapacidad());
+            
+            /* Obtiene Grado de estudios */
             GradoEstudiosDAO geDAO = new GradoEstudiosDAO();
             Gradoestudios ge = new Gradoestudios();
-            ge.setIdGradoEstudios(becario.getGradoestudios().getIdGradoEstudios());
-            ge=geDAO.find(ge);
-            mv.addObject("gradoEstudiosNombre",ge.getNombreGradoEstudios());
-            BecarioDAO dao = new BecarioDAO();
-            int idDireccion = dao.find(becario).getDireccion().getIdDireccion();
+            ge=geDAO.find(becario.getGradoestudios());
+            becario.setGradoestudios(ge);
+            System.out.println(becario.getGradoestudios().getNombreGradoEstudios());
+            
+            /* Obtiene direccion */
             DireccionDAO daoDireccion = new DireccionDAO();
-            Direccion direccion = new Direccion();
-            direccion.setIdDireccion(idDireccion);
-            direccion=daoDireccion.find(direccion);
-            mv.addObject("direccion",direccion);
+            Direccion direccion = daoDireccion.find(becario.getDireccion());
+            System.out.println(direccion.getCalle());
+            becario.setDireccion(direccion);
+            
+            /* Verifica si ya se registraron los documentos */
+            String path=session.getServletContext().getRealPath("/");
+            path=path.replace("build\\web", "");
+            File directorio=new File(path+"files/"+becario.getCurp());
+            if(directorio.exists()){
+                System.out.println("Existe");
+                path=path.replace("file:///", "");
+                path=path.replace("//", "/");
+                mv.addObject("txtDocumentos","Ver mis documentos");
+                mv.addObject("docFlag",1);
+                
+            }else{
+                mv.addObject("txtDocumentos","Registrar mis documentos");
+                mv.addObject("docFlag",0);
+            }
+            
+            
+            mv.addObject("becario", becario);
+            mv.setViewName("InicioBecario");
             return mv;
         } catch (Exception e) {
         }
@@ -306,10 +338,122 @@ public class BecarioController {
         return null;
     }
     
+    @RequestMapping(value = "/AgregarDocumentosBecario", method = RequestMethod.GET)
+    public ModelAndView agregarDocumentos(Becario becario,HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        try {
+            mv.addObject("becario",becario);
+            BecarioDAO dao = new BecarioDAO();
+            int idDireccion = dao.find(becario).getDireccion().getIdDireccion();
+            DireccionDAO daoDireccion = new DireccionDAO();
+            Direccion direccion = new Direccion();
+            direccion.setIdDireccion(idDireccion);
+            direccion=daoDireccion.find(direccion);
+            
+            return mv;
+        } catch (Exception ex) {
+         
+        }
+        return null;
+    }
+
+    
+    @RequestMapping(value="/savefileBecario",method=RequestMethod.POST)  
+    public ModelAndView upload(@RequestParam CommonsMultipartFile file,
+        @RequestParam CommonsMultipartFile domicilio,
+        @RequestParam CommonsMultipartFile estudios,
+        @RequestParam CommonsMultipartFile acta,
+        HttpSession session,Becario becario){  
+        ModelAndView mv = new ModelAndView();
+        String path=session.getServletContext().getRealPath("/");
+        path=path.replace("build\\web", "");
+        File directorio=new File(path+"files/"+becario.getCurp());
+        directorio.mkdirs();
+        path=path + "files\\"+becario.getCurp();
+        String filename=file.getOriginalFilename();  
+        String filename2=domicilio.getOriginalFilename();
+        //String ext=file.getOriginalFilename().split(".")[0];
+        System.out.println(path+" "+filename);  
+        try{  
+            /*  GUARDAR CURP  */
+            byte barr[]=file.getBytes();  
+            BufferedOutputStream bout=new BufferedOutputStream(
+                new FileOutputStream(path+"/curp.pdf"));  
+                //new FileOutputStream(path+"/"+filename));  
+                System.out.println(path);
+            bout.write(barr);  
+            bout.flush();  
+            bout.close(); 
+
+            /*  GUARDAR COMPROBANTE DE DOMICILIO  */
+            byte barr2[]=domicilio.getBytes();
+            bout=new BufferedOutputStream(
+                new FileOutputStream(path+"/domicilio.pdf"));  
+                //new FileOutputStream(path+"/"+filename));  
+            System.out.println(path);
+            bout.write(barr2);  
+            bout.flush();  
+            bout.close();
+            
+            /*  GUARDAR COMPROBNTE DE ESTUDIOS  */
+            byte barr3[]=estudios.getBytes();
+            bout=new BufferedOutputStream(
+                new FileOutputStream(path+"/estudios.pdf"));  
+                //new FileOutputStream(path+"/"+filename));  
+            System.out.println(path);
+            bout.write(barr3);  
+            bout.flush();  
+            bout.close();
+            
+            /*  GUARDAR ACTA DE NACIMIENTO  */
+            byte barr4[]=acta.getBytes();
+            bout=new BufferedOutputStream(
+                new FileOutputStream(path+"/acta.pdf"));  
+                //new FileOutputStream(path+"/"+filename));  
+            System.out.println(path);
+            bout.write(barr4);  
+            bout.flush();
+            bout.close();
+            
+            /* Mensaje para inicio*/
+            mv.addObject("txtDocumentos","Ver mis documentos");
+            mv.addObject("docFlag",1);
+            mv.setViewName("InicioBecario");
+            
+        }catch(Exception e){System.out.println(e);}  
+        return mv;
+    } 
+    
     @RequestMapping(value = "/closeSession")
     public String closeSession(SessionStatus status) {
         status.setComplete();
         return "lastpage";
+    }
+    
+    @RequestMapping(value = "/MostrarArchivo", method = RequestMethod.GET)
+    public ModelAndView mostrarArchivo(@RequestParam("id") String id,
+            @RequestParam("file") String file,
+            HttpSession session,
+            HttpServletResponse response) throws FileNotFoundException, IOException {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("MostrarArchivo");
+        System.out.println("estamos en el get de OpenPdf");
+        String path=session.getServletContext().getRealPath("/");
+            path=path.replace("build\\web", "");
+            path=path+"files/"+id+"/"+file+".pdf";
+            //File directorio=new File(path+"files/"+id);
+        try (FileInputStream ficheroInput = new FileInputStream(path)){//"C:\\Users\\lm107\\Documents\\NetBeansProjects\\TTVinculacionLaboral\\files\\AUPL970715HMCBRS07\\curp.pdf")) {
+            int tamanoInput = ficheroInput.available();
+            byte[] datosPDF = new byte[tamanoInput];
+            ficheroInput.read( datosPDF, 0, tamanoInput);
+            
+            response.setHeader("Content-disposition","inline; filename=instalacion_tomcat.pdf" );
+            response.setContentType("application/pdf");
+            response.setContentLength(tamanoInput);
+            response.getOutputStream().write(datosPDF);
+        }
+        
+        return mv;
     }
     
     private void userSession(Usuario u,HttpSession sesion){

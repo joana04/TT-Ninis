@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,24 +17,24 @@
                             <h5> Dirección </h5>
                             <hr>
                             <div class="row">
-                                <label class="col-xs-12">Calle: ${direccion.getCalle()}</label>
+                                <label class="col-xs-12">Calle: ${becario.getDireccion().getCalle()}</label>
                             </div>
                             <div class="row">
-                                <label class="col-xs-12">Colonia: ${direccion.getColonia()}</label>
+                                <label class="col-xs-12">Colonia: ${becario.getDireccion().getColonia()}</label>
                             </div>
                             <div class="row">
-                                <label class="col-xs-12" >Número interior:   ${direccion.getNumeroInterior()} </label>
+                                <label class="col-xs-12" >Número interior:   ${becario.getDireccion().getNumeroInterior()} </label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <label class="col-xs-12">Número exterior: ${direccion.getNumeroExterior()}</label>
+                                <label class="col-xs-12">Número exterior: ${becario.getDireccion().getNumeroExterior()}</label>
                             </div>
                             <div class="row">
-                                <label class="col-xs-12">Municipio o delegación: ${direccion.getMunicipioDelegacion()}</label>
+                                <label class="col-xs-12">Municipio o delegación: ${becario.getDireccion().getMunicipioDelegacion()}</label>
                             </div>
                             <div class="row">
-                                <label class="col-xs-12">Entidad Federal: ${direccion.getEntidadFederal()}</label>
+                                <label class="col-xs-12">Entidad Federal: ${becario.getDireccion().getEntidadFederal()}</label>
                             </div>
                             <div class="row">
-                                <label class="col-xs-12">Código postal: ${direccion.getCodigoPostal()}</label>
+                                <label class="col-xs-12">Código postal: ${becario.getDireccion().getCodigoPostal()}</label>
                             </div> 
                         </div>
                 </div>

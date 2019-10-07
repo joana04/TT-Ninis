@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,12 +7,12 @@
     </head>
     <body>
         <!-- Navbar -->
-        <%@ include file="shared/navbarBecario.jsp" %>
+        <%@ include file="shared/navbarEmpresa.jsp" %>
 
         <div class="container animated fadeIn delay-10ms">
             <div class="row ">
                 <div class="col-12">
-                    <h2>Vinculación Laboral - ${becario.getNombreBecario()}</h2>
+                    <h2>Vinculación Laboral - ${empresa.getNombreEmpresa()}</h2>
                     <hr>
                 </div>
                 <div class="col-md-4 col-xs-12"> 
@@ -38,20 +36,12 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-12">
-                    <div class="card border-info mb-3" style="max-width: 20rem;">
+                    <div class="card border-info mb-3" style="max-width: 50rem;">
                         <div class="card-header"> </div>
                         <div class="card-body">
                           <h4 class="card-title">Documentos</h4>
-                          <p class="card-text">${txtDocumentos}</p>
-                          <c:choose>
-                            <c:when test = "${docFlag > 0}">
-                                <a href="#" class="btn btn-lg btn-outline-info btn-block openModalUbicacionBecario" data-toggle="modal" data-target="#modalDocumentosBecario">Revisar</a>
-                            </c:when>
-
-                            <c:otherwise>
-                                <a href="AgregarDocumentosBecario.htm" class="btn btn-lg btn-outline-info btn-block">Revisar</a>
-                            </c:otherwise>
-                         </c:choose>
+                          <p class="card-text">Registrar documentos</p>
+                          <a href="MostrarBecario.htm" class="btn btn-lg btn-outline-info btn-block">Revisar</a>
                         </div>
                     </div>
                 </div>
@@ -61,19 +51,9 @@
                     <div class="card border-warning mb-3" style="max-width: 20rem;">
                         <div class="card-header"></div>
                         <div class="card-body">
-                          <h4 class="card-title">Perfil Laboral</h4>
-                          <p class="card-text">Registrar mi formación profesional.</p>
-                          <a href="#" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="card border-warning mb-3" style="max-width: 20rem;">
-                        <div class="card-header"></div>
-                        <div class="card-body">
-                          <h4 class="card-title">Vacantes seleccionadas</h4>
-                          <p class="card-text">Vacantes a las cuales he aplicado.</p>
-                          <a href="#" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
+                          <h4 class="card-title">Ver becarios</h4>
+                          <p class="card-text">Muestra los becarios de la empresa.</p>
+                          <a href="MostrarEmpresas.htm" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
                         </div>
                     </div>
                 </div>
@@ -82,8 +62,18 @@
                         <div class="card-header"></div>
                         <div class="card-body">
                           <h4 class="card-title">Vacantes ofertadas</h4>
-                          <p class="card-text">Buscar vacantes</p>
-                          <a href="#" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
+                          <p class="card-text">Vacantes.</p>
+                          <a href="MostrarEmpresas.htm" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card border-warning mb-3" style="max-width: 50rem;">
+                        <div class="card-header"></div>
+                        <div class="card-body">
+                          <h4 class="card-title">Becarios aplicando a vacantes</h4>
+                          <p class="card-text">Seleccionar becarios</p>
+                          <a href="MostrarEmpresas.htm" class="btn btn-lg btn-outline-warning btn-block">Revisar</a>
                         </div>
                     </div>
                 </div>
@@ -140,38 +130,15 @@
         </div>
     </div>
 </div>
-            
-<div id="modalDocumentosBecario" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Contenido del modal -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5>Datos del becario ${becario.getNombreBecario()}</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-              <%@ include file="VerDocumentosBecario.jsp" %>
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-lg btn-outline-danger" data-dismiss="modal" value="Cerrar"/>
-              <input onclick="agregarDocumentosBecario()" type="button" class="btn btn-lg btn-outline-info" value="Editar" />
-            </div>
-        </div>
-    </div>
-</div>
       
 <script>
     $("#modalInfoBecario").modal("show");
     $("#modalUbicacionBecario").modal("show");
-    $("#modalDocumentosBecario").modal("show");
     function editarBecario(){
         document.location.replace("EditarBecario.htm");
     }
     function editarUbicacionBecario(){
         document.location.replace("EditarBecarioUbicacion.htm");
-    }
-    function agregarDocumentosBecario(){
-        document.location.replace("AgregarDocumentosBecario.htm");
     }
 </script>
         <!-- footer -->

@@ -2,6 +2,7 @@ package com.ipn.mx.model.dao;
 
 import java.util.List;
 import com.ipn.mx.model.dto.Becario;
+import com.ipn.mx.model.dto.Usuario;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -104,6 +105,29 @@ public class BecarioDAO {
         return null;
     }
     
+    public Becario find(Usuario usuario) {
+        List<Becario> resultados=null;
+        Becario resultado=null;
+        try{
+            session = buildSessionFactory().openSession();
+            String hql = "from Becario where correo='"+usuario.getCorreo()+"'";
+            Query query = session.createQuery(hql);
+            if(query.list().size()>0)
+                resultado = (Becario)query.list().get(0);
+        }catch(HibernateException ex){
+            ex.printStackTrace();
+        }finally{
+            if(session.isOpen()){
+                session.close();
+            }
+            if(!sessionFactory.isClosed()){
+                sessionFactory.close();
+            }
+            StandardServiceRegistryBuilder.destroy(serviceRegistryObj);
+        }
+        return resultado;
+    }
+    
     public List<Becario> findAll() {
         List<Becario> resultados=null;
         try{
@@ -129,9 +153,13 @@ public class BecarioDAO {
     /*public static void main(String[] args) {
         BecarioDAO dao = new BecarioDAO();
         Becario becario = new Becario();
-        becario.setCurp("AUPL970715HMCBRS00");
-        System.out.println(dao.find(becario).getDireccion().getIdDireccion());
-    }*/
-    
+        Usuario usuario=new Usuario();
+        usuario.setCorreo("correo7@gmail.com");
+        becario=dao.find(usuario);
+        System.out.println(becario.getCurp());
+        //becario.setCurp("AUPL970715HMCBRS00");
+        //System.out.println(dao.find(becario).getDireccion().getIdDireccion());
+    }
+    */
 }
 

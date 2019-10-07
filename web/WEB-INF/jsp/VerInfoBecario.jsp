@@ -39,13 +39,13 @@
                         <label class="col-xs-12">Celular: ${becario.getTelefono()}</label>
                     </div>
                     <div class="row">
-                        <label class="col-xs-12">Discapacidad: ${discapacidadNombre}</label>
+                        <label class="col-xs-12">Discapacidad: ${becario.getDiscapacidades().getNombreDiscapacidad()}</label>
                     </div>
                     <br><br>
                     <h5> Información académica</h5>
                     <hr>
                     <div class="row">
-                        <label class="col-xs-12">Grado de estudios: ${gradoEstudiosNombre} </label>
+                        <label class="col-xs-12">Grado de estudios: ${becario.getGradoestudios().getNombreGradoEstudios()} </label>
                     </div>
                 </div>
             </div>

@@ -7,36 +7,32 @@
         <link rel="stylesheet" href="assets/css/signin.css">
     </head>
     <body >
-        <!--div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
             <div class="container">
-                <a href="../" class="navbar-brand">IPN</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                </div>
+                <a href="https://www.ipn.mx" class="navbar-brand">IPN</a>
             </div>
-         </div-->
-        
-        <%@ include file="shared/navbar.jsp" %>
+        </div>
         <div class="container">
             <div class="row text-center">
                 <div class="col-12 ">
                     <div class="center-auto">
                         <div class="form-signin">
-                            <!--img class="mb-4" src="assets/img/ipn-logo.jpg" alt="" width="72" height="90"-->
+                            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                            <img class="mb-4" src="assets/img/ipn-logo.jpg" alt="" width="72" height="90">
+                            
                             <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
+                            <p class="text-danger"> ${errorContra} ${errorUser} </p>
                             <hr>
                             <div class="form-group">
-                                <form action="login.htm" method="POST" > 
+                                <form action="Inicio.htm" method="POST" > 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="user" name="user" placeholder="Correo electronico" required>
+                                        <input type="email" class="form-control" id="user" name="correo" placeholder="Correo electronico" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="descripcion" name="password" placeholder="Contraseña" required>
+                                        <input type="password" class="form-control" id="descripcion" name="contrasena" placeholder="Contraseña" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-lg btn-outline-info btn-block">Agregar</button>
+                                        <button type="submit" class="btn btn-lg btn-outline-info btn-block">Iniciar</button>
                                     </div>
                                 </form>
                             </div>
