@@ -1,0 +1,20 @@
+\begin{BD}{  Tabla}{direccion}{
+		En esta tabla se tendrá registro de las direcciones de los usuarios del sistema.
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idDireccion}{Identificador único para la dirección. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{calle}{Nombre de la calle en la cual habita el usuario. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 20 dígitos.}
+
+		\BDitem{No}{numeroExterior}{Número oficial o exterior de la propierdad que habita el usuario. Entero de longitud 10.}{Si}{No}{Si}{números enteros.}
+
+		\BDitem{No}{numeroInterior}{Número interior de la propierdad que habita el usuario. Entero de longitud 10.}{No}{No}{Si}{números enteros.}
+
+		\BDitem{No}{colonia}{Nombre de la colonia en la cual habita el usuario. Carácter (varchar) de longitud 50.}{Si}{No}{Si}{Cadena de 50 dígitos.}
+
+		\BDitem{No}{municipio Delegacion}{Municipio o delagación en la cual habita el usuario. Carácter (varchar) de longitud 50.}{Si}{No}{Si}{Cadena de 50 dígitos.}
+
+		\BDitem{No}{etidadFederativa}{Entidad federativa en la cual habita el usuario. Carácter (varchar) de longitud 50.}{Si}{No}{Si}{Cadena de 50 dígitos.}
+
+		\BDitem{No}{codigoPostal}{Código Postal correspondiente a la zona en la cual habita el usuario. Carácter (char) de longitud 5.}{Si}{No}{Si}{Cadena de 5 dígitos.}
+
+\end{BD}

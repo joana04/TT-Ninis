@@ -1,0 +1,50 @@
+\begin{UseCase}{CU1.02}{Ver Becarios - Administrador }{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} visualizar los becarios registrados en el sistema, el usuario presiona el botón \IUbutton{Revisar} ubicado en la sección  Ver Becarios en la pantalla  \IUref{IU1.02}{Inicio de Administrador} o presiona la opción Ver Becarios en el menú superior, el sistema obtiene los becarios registrados en el sistema los muestra en la pantalla \IUref{IU1.03}{Ver Becarios - Administrador} organizados en una tabla que da la información principal del becario y brinda la opciones de visualizar la información del becario, editarlo y eliminarlo. 
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá visualizar los becarios registrados en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		N/A}
+		\UCitem{Postcondiciones}{
+		   N/A}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Visualizar becarios }
+	
+
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Ver Becarios de la pantalla \IUref{IU1.02}{Inicio de Administrador}.\Trayref{A-CU1.02}
+		\UCpaso[\UCsist] Obtiene la información de los becarios registrados en el sistema.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.03}{Ver Becarios - Administrador} con la infromación de los becarios. 
+       
+		
+	\end{UCtrayectoria}
+	
+
+%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{A-CU1.02}{Ingreso por menú superior.}{A}
+	    \UCpaso[\UCactor]Presiona la opción Ver Becarios en el menú superior de cualquier pantalla en el sistema. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+%---------------------------Puntos de extension 
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+
+	
+	\begin{UCExtenssionPoint}{Ver información del becario}{El usuario desea visualizar la información de un becario en específico.}{El usuario presiona el icono \textcircled{i} correspondiente al becario que desea revisar.}{Caso de uso \cdtRef{CU1.03}{Ver Información de Becarios - Administrador}.} 
+	\end{UCExtenssionPoint}
+	\begin{UCExtenssionPoint}{Editar becario}{El usuario desea editar la información de un becario del sistema.}{El usuario presiona el icono \faEdit correspondiente al becario que desea editar.} Caso de uso {\cdtRef{CU1.08}{Editar Becario - Administrador}} 
+	\end{UCExtenssionPoint}
+	
+	\begin{UCExtenssionPoint}{Eliminar becario}{El usuario desea eliminar un becario del sistema.}{El usuario presiona el icono \faTrashO  correspondiente al becario que desea eliminar.}{\cdtRef{CU1.04}{Eliminar Becario - Administrador}} 
+	\end{UCExtenssionPoint}
+

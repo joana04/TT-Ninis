@@ -1,0 +1,21 @@
+\begin{BD}{Catálogo}{tipoempresa}{
+	%%Descripcion
+	En esta tabla de encuentra el registro de los representantes de los actores \cdtRef{Actor: Empresa}{Empresa} los cuales pueden identificarse e iniciar sesión para utilizar el sistema.
+\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idTipo Empresa}{Identificador único para el tipo de empresa. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{nombreTipo Empresa}{Nombre del tipo de Empresa. Carácter (varchar) de longitud 20.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+
+		\BDitem{No}{descripcionTipo Empresa}{Descripción del tipo de empresa. Carácter (varchar) de longitud 60.}{No}{No}{Si}{Cadena de 60 dígitos.}
+		
+		
+\end{BD}
+
+El catalogo contiene los tipos de personas según el Código Fiscal de la Federación  y con las cuales  se registra ante el Servicio de Administración Tributaria en el Registro Federal del Contribuyentes. \cite{CFF}  \cite{SATP}
+\\
+\begin{itemize}
+    \item Persona física: Es el individuo miembro de una comunidad, con derechos y obligaciones, determinados por un ordenamiento jurídico.\cite{SATP}
+    
+    \item Persona moral: Es el conjunto de personas físicas, que se unen para la realización de un fin colectivo, son entes creados por el derecho y la ley les otorga capacidad jurídica para tener derechos y obligaciones.\cite{SATP}
+\end{itemize}

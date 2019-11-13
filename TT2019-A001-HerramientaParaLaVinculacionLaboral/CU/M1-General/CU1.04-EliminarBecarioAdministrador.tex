@@ -1,0 +1,63 @@
+\begin{UseCase}{CU1.04}{Eliminar Becario - Administrador}{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} eliminar un becario registrado en el sistema, en la pantalla \IUref{IU1.03}{Ver Becarios - Administrador} el administrador presiona el icono \faTrashO correspondiente la fila del becario que desea eliminar, el sistema muestra una ventana para confirmación como en la pantalla \IUref{IU1.05}{Eliminar Becario - Administrador} con el mensaje \MSGref{MSG1.04}{Eliminar becario}, el administrador confirma la eliminación del becario, el sistema elimina el registro del becario en el sistema.
+    
+    
+  %  \textcircled{i}
+%\faTrashO
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá eliminar un becario registrado en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.
+    			\item Pantalla \IUref{IU1.05}{Eliminar Becario - Administrador}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		N/A}
+		\UCitem{Postcondiciones}{
+		   Becario eliminado del sistema.}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Eliminar Becario }
+	
+%		\UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+%	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.02}{Inicio de Administrador}.
+%	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Ver Becarios de la pantalla \IUref{IU1.02}{Inicio de Administrador}.
+%		\UCpaso[\UCsist] Obtiene la información de los becarios registrados en el sistema.
+%		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.03}{Ver Becarios - Administrado}. 
+		\UCpaso[\UCactor] Presiona el icono \faTrashO correspondiente a la fila del becario que desea eliminar en la pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.\Trayref{A-CU1.04}\Trayref{C-CU1.04}
+		\UCpaso[\UCsist] Muestra una ventana para confirmación como muestra la pantalla \IUref{IU1.05}{Eliminar Becario - Administrador} con el mensaje \MSGref{MSG1.04}{Eliminar becario.}
+		\UCpaso[\UCactor]Presiona el botón \IUbutton{Aceptar} de la ventana de confirmación.\Trayref{B-CU1.04}
+		\UCpaso[\UCsist] Obtiene la información del becario.
+		\UCpaso[\UCsist] Elimina la información del becario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.03}{Ver Becarios - Administrado}. 
+       
+		
+	\end{UCtrayectoria}
+
+%----------------Trayectoria alternativa A --> ver información 
+\begin{UCtrayectoriaA}{A-CU1.04}{Ver información de becario -Administrador.}{A}
+	     \UCpaso[\UCactor]Presiona el icono \textcircled{i} correspondiente a la fila del becario que desea observar.
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.03}{Ver Información de Becarios - Administrador }.}
+	\end{UCtrayectoriaA}
+	
+ %-------------------------------------Trayectorias alternativas B--> Cancelar
+	\begin{UCtrayectoriaA}{B-CU1.04}{Presiona el botón \IUbutton{Cancelar} de la ventana de confirmación }{B}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU1.03}{Ver Becarios - Administrado}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+
+\begin{UCtrayectoriaA}{C-CU1.04}{Editar becario.}{C}
+	     \UCpaso[\UCactor]Presiona el icono  \faEdit correspondiente a la fila del becario que desea editar.
+	    % \UCpaso[\UCsist] Muestra una ventana para confirmación con el mensaje %\MSGref{MSG1.04}{Eliminar becario.}
+	     
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.08}{Editar Becario - Administrador }.}
+	\end{UCtrayectoriaA}

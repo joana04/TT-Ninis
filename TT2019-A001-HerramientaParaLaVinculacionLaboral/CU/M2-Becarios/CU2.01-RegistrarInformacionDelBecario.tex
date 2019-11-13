@@ -1,0 +1,134 @@
+
+\begin{UseCase}{CU2.01}{Registrar información del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} registrar su información en el sistema, el \cdtRef{Actor: Becario}{Becario} presiona el botón \IUbutton{Regístrate} en la sección de Becarios de la pantalla  \IUref{IU1.01}{Índex}, el sistema muestra la pantalla  \IUref{IU2.01}{Registro de Informaci\'on de Becarios} en la cual el usuario podrá ingresar los datos solicitados en la pantalla, después de ingresar sus datos, el usuario podrá presionar el  botón \IUbutton{Cancelar} para cancelar la solicitud o el botón \IUbutton{Siguiente} para registrarse en el sistema y continuar con el ingreso de su domicilio en el caso de uso \cdtRef {CU2.04}{Registrar ubicación del Becario}.    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El solicitante podrá registrar sus datos en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+		\begin{itemize}
+			\item Correo electrónico.
+  		        \item Nombre completo.
+  		        \item CURP.
+  		        \item Edad (años).
+  		        \item Número de Seguro Social.
+  		        \item Télefono.
+  		        \item Celular.
+  		        \item Discapacidad.
+				\item Grado de estudios.
+			    
+		    \end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG2.02}{Formato de CURP erróneo.}
+    			\item \MSGref{MSG2.03}{Formato de Núm. de seguro social erróneo.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			%\item \MSGref{MSG2.07}{Formato de Código Postal erróneo.}
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		N/A}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se genera el registro del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Registrar información }
+	    \UCpaso[\UCactor] Ingresa en el navegador la dirección http://35.224.218.161/TTVinculacionLaboral/index.htm
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.01}{Índex}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Regístrate} en la sección Becarios de la pantalla \IUref{IU1.01}{Índex}.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+    
+		\UCpaso[\UCactor] Ingresa los datos solicitados en la pantalla \IUref {IU2.01}{Registro de Informaci\'on de Becarios}.
+		
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Siguiente}. \Trayref{A-CU2.01}\Trayref{F-CU2.01}
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{B-CU2.01}
+		\UCpaso[\UCsist] Valida que el correo no exista en el sistema.\Trayref{E-CU2.01}
+		\UCpaso[\UCsist] Verifica que el correo electrónico ingresado esté con base en la regla de negocio \hyperlink{RN13}{Correo electrónico}. \Trayref{H-CU2.01}
+		\UCpaso[\UCsist] Verifica que los telefonos esten con base en la regla de negocio \hyperlink{RN10}{Número telefónico (fijo o celular)}. \Trayref{G-CU2.01}
+		
+		\UCpaso[\UCsist] Verifica que el CURP ingresado por el usuario cumpla con la \hyperlink{RN3}{RN-3. Formato de CURP} . \Trayref{C-CU2.01}
+		\UCpaso[\UCsist] Verifica que el número de seguro social ingresado por el usuario cumpla con la \hyperlink{RN4}{RN-4. Formato de Número de Seguro Social} . \Trayref{D-CU2.01}
+        \UCpaso[\UCsist] Registra la información del solicitante en el sistema.
+	    \UCpaso[\UCsist] Extiende al caso de uso \cdtRef {CU2.04}{Registrar ubicación del Becario}.
+
+		
+	\end{UCtrayectoria}
+	
+
+	%---- A Cancelar 
+	%---- B Campos vacíos
+	%---- C CURP invalido
+	%---- D No. de seguro social invalido
+	%---- E CP erróneo
+	
+	
+	%---- F formato incorrecto 
+	%---- G tamaño incorrecto 
+
+	
+	
+
+	%-------------------------------------Trayectorias alternativas A --> Cancelar
+	\begin{UCtrayectoriaA}{A-CU2.01}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}}{A}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU1.01}{Índex}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+	%-------------------------------------Trayectorias alternativas C --> Campos vacíos
+	\begin{UCtrayectoriaA}{B-CU2.01}{Campos vacíos.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+    
+	%-------------------------------------Trayectorias alternativas D --> CURP erróneo 
+	\begin{UCtrayectoriaA}{C-CU2.01}{El CURP no tiene el formato correcto.}{C}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.02}{Formato de CURP erróneo} en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+
+    %-------------------------------------Trayectorias alternativas E --> Número de seguro social erróneo 
+	\begin{UCtrayectoriaA}{D-CU2.01}{El número de seguro social no tiene el formato correcto.}{D}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.03}{Formato de Núm. de seguro social erróneo} en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+
+
+	    %-------------------------------------Trayectorias alternativas G --> Correo registrado
+	\begin{UCtrayectoriaA}{E-CU2.01}{El correo ingresado ya se encuentra registrado en el sistema.}{E}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.08}{Correo ya registrado} en la pantalla \IUref{IU1.01}{Índex}.
+		\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+	\end{UCtrayectoriaA}
+	
+		\begin{UCtrayectoriaA}{F-CU2.01}{ Presiona el link de las Condiciones de uso y  Política de privacidad.}{F}
+		\UCpaso[\UCsist] Abre el aviso de privacidad en una pestaña nueva.
+		\item[- -] - - {\em Regresa al punto número 6 de la trayectoria principal.} 
+	\end{UCtrayectoriaA}
+	
+		\begin{UCtrayectoriaA}{G-CU2.01}{El teléfono ingresado no tiene el formato correcto.}{G}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.10}{Formato de número telefónico incorrecto} en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+    \begin{UCtrayectoriaA}{H-CU2.01}{El correo electrónico ingresado no tiene el formato correcto.}{H}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.11}{Correo electrónico invalido} en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+ 
+	\subsection{Puntos de Extensión del Caso de Uso}
+	
+	\begin{UCExtenssionPoint}{Registrar información geográfica}{El usuario desea registrar su información geográfica en el sistema.}{Paso 12 de la trayectoria principal}{Caso de uso \cdtRef{CU2.04}{Registrar ubicación del Becario}} 
+	\end{UCExtenssionPoint}

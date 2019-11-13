@@ -1,0 +1,35 @@
+\begin{BD}{Catálogo}{giroempresarial}{
+	%%Descripcion
+	En esta tabla de encuentra el registro de los principles giros comerciales o actividades económicas. En catálogo actual del SAT cuenta con 2269 actividades ecónomicas \cite{SAT-AE} preo se encuentran agrupadas en 18 Actividades principales \cite{JCF-AE}
+\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idGiro Empresarial}{Identificador único para el tipo de empresa. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{nombreGiro Empresarial}{Nombre del tipo de Empresa. Carácter (varchar) de longitud 20.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+
+		\BDitem{No}{descripcionGiro Empresarial}{Descripción del giro empresarial. Carácter (varchar) de longitud 60.}{No}{No}{Si}{Cadena de 60 dígitos.}
+		
+		
+\end{BD}
+
+Las actividades o giros comerciales que están registradas en el catálogo son las siguientes: \\
+\begin{itemize}
+    \item Comercio al por menor
+	\item Comercio al por mayor
+	\item Servicio de hotelería
+	\item Servicios educativos
+	\item Servicios de salud y asistencia social
+	\item Servicios inmobiliarios y de alquieler de bienes inmuebles
+	\item Servicios profesionales, científicos y técnicos
+	\item Servicios financieros y de seguros
+	\item Servicio de apoyo a los negocios y manejo de residuos
+	\item Servicios de esparcimiento cultural y deportivo
+	\item Construcción de inmuebles
+	\item Industria manufacturera
+	\item Transporte, correos y almacenamiento
+	\item Información de medios masivos
+	\item Electricidad, suministro de agua y de gas
+	\item Agricultura, cría de animales, pesca y caza
+	\item Minería
+	\item Otra actividad
+\end{itemize}

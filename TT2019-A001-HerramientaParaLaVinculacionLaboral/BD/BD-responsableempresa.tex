@@ -1,0 +1,22 @@
+\begin{BD}{Tabla}{reponsableempresa}{
+	%%Descripcion
+	En esta tabla de encuentra el registro de los representantes de los actores \cdtRef{Actor: Empresa}{Empresa} los cuales pueden identificarse e iniciar sesión para utilizar el sistema.
+\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idReponsable Empresa}{Identificador único para el registro del representante de la empresa. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{nombreRes- ponsable}{Nombre del responsable de la Empresa. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+
+		\BDitem{No}{paternoRes- ponsable}{Apellido paterno del responsable de la Empresa. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+
+		\BDitem{No}{maternoRes- ponsable}{Apellido materno del responsable de la Empresa. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+		
+		\BDitem{No}{cargo}{Cargo o posición del responsable entro de la empresa. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+
+		\BDitem{No}{telefono}{Teléfono (fijo o celular) de contacto del representante de la empresa. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{Número telefónico (fijo o celular)}.}
+
+		\BDitem{No}{celular}{Teléfono (fijo o celular) de contacto del representante de la empresa. Carácter (varchar) de longitud 10.}{No}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{Número telefónico (fijo o celular)}.}
+
+		
+		
+\end{BD}

@@ -1,0 +1,19 @@
+\begin{BD}{  Catálogo}{discapacidades }{
+		En esta tabla se tendrá registro de las discapacidades, la Clasificación Internacional del Funcionamiento, de la Discapacidad y de la Salud (CIF) contiene 1686 discapacidades, las cuales se pueden agrupar en 4 tipos de discapacidades. \cite{DIS}
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idDiscapacidad}{Identificador único para la discapacidad. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{nombreDisca- pacidad}{Nombre de la discapacidad. Carácter (varchar) de longitud 20.}{Si}{No}{Si}{Cadena de 20 dígitos.}
+
+		\BDitem{No}{descripcion Discapacidad}{Descripción de la discapacidad. Carácter (varchar) de longitud 60.}{No}{No}{Si}{Cadena de 60 dígitos.}
+			
+\end{BD}
+
+as discapacidades registradas en el catálogo son las siguientes:
+\begin{itemize}
+    \item Sensorial
+	\item Motriz
+	\item Mental
+	\item Múltiple
+	\item Ninguna
+\end{itemize}

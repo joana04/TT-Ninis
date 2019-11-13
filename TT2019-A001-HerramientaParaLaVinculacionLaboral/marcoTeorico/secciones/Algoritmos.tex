@@ -1,0 +1,37 @@
+ \newpage
+ 
+\section{Emparejamiento de perfiles}
+
+A continuación, se presentan dos artículos que abordan de formas diferentes el perfilamiento de personas, se presenta un resumen del articulo y los datos más relevantes de los algoritmos.\\
+
+\subsection{Artículo: Development of a Mathematical Model to determine the Profile of Worker Profession in Railway Company }
+
+   En este artículo se explica el proceso para generar modelos matemáticos que ayudan a identificar trabajadores ''ideales'' potenciales de acuerdo con el perfil buscado. Para esto se realiza una investigación de los trabajadores con mejor desempeño y se identifican las principales características que tienen en común, una vez que se hace este proceso se generan estadísticas y funciones acordes a los datos obtenidos.  \\
+  
+  En el presente no hay una definición clara de que propiedades o que valores numéricos de las características de una persona son las que debe tener para cumplir con el perfil de determinada profesión. Para esto se propone un modelo basado en un sistema inteligente autodidacta que a su vez se basa en el machine learning. \\
+    
+    De acuerdo al sistema propuesto en el artículo un perfil se representaría como un arreglo de N propiedades del mismo, las cuales se representan de forma numérica acorde a la frecuencia en que se presentan, esto es un punto muy importante ya que a partir de aquí se identificarán los picos máximos de frecuencia de cada una de las propiedades del perfil de los trabajadores con mejor desempeño. después de obtener esa información se puede hacer un ranking de frecuencia de cada propiedad del perfil, para determinar cuáles son las más importantes (dominantes). \\
+    
+    Una vez generadas las tablas y gráficas donde se representan las propiedades dominantes, se procede a plotear el perfil de la profesión con valores máximos de 1. Todo este proceso permite obtener el perfil del trabajador ''ideal'' en una representación numérica y medible, con esto cuando un nuevo aspirante aplique para este perfil, ya se tendrá una referencia de cuales son las principales características que se deben conocer sobre el mismo, además de la importancia que tendrán cada una de ellas sobre las otras, para así poder determinar si la persona cumple con las características requeridas para el trabajo. \\
+    
+    Debido a que es muy difícil que una persona cumpla con todas las características del perfil generado, también se calcula la desviación que existe entre cada característica del aspirante con la del perfil y de esta manera buscar la mínima, es decir a la persona más cercana al mismo.\cite{DMMDPWPRC}
+     \bigskip
+
+\subsection{Artículo: Personal information categorizing system with an associative memory model }
+    El artículo nos explica el sistema de categorización de información personal (PICSY por sus siglas en inglés\cite{PICSY}), es un sistema basado en un modelo de memoria asociativa, PICSY divide el perfil en sub-perfiles y cada uno corresponde a categorías en las cuales el usuario está interesado.\\
+    
+    PICSY está basado en un modelo de memoria asociativa, por las dificultades para determinar la información que se tomaría en cuenta ya que las personas utilizan palabras que no siempre son claras en un tema o contenido, una palabra puede tener más de un significado \cite{PICSY2}. Sin embargo, no solo el significado de la palabra importa, sino que el contexto y la connotación de la misma, son elementos utilizados para recuperar o determinar el cambio de los elementos \cite{PICSY3}.\\
+    
+    Para el filtrado de información se clasifican los temas en dos grupos: los temas en los que está interesado el usuario y en los que no está interesado. El usuario proporciona un grupo de palabras, en el cual, el valor de la palabra depende de si esta refleja si el usuario está o no interesado en el tema. Para esto, Kindo presento en 1997 un sistema de filtrado de información (INSOP) \cite{PICSY3} \\
+    
+    Cuando se comienza a trabajar con INSOP, se ven tres problemas, el primero es que de entrada se tengan palabras ``raras'' es decir palabras que tengan un resultado, pero este sea irreal, la segunda problemática es como se va inicializar el sistema y la tercera es como adaptarse a los intereses del usuario y sus modificaciones. Para solucionar esto, se amplió el Calificador estático de palabras clave (SKC por sus siglas en inglés) \cite{PICSY}, por otra parte, INSOP resuelve los problemas dos y tres, debido a que puede comenzar con un perfil vacío.
+        
+    El sistema divide el perfil en sub-perfiles de acuerdo con la relación semántica de las palabras, esto se hace por medio en una Matriz de fuerza de relaciones semánticas para reducir la red, en sub-redes acorde a su conexión entre nodos en la matriz para después proceder a definir los sub-perfiles.\\
+    
+    De esta forma PYCSY categoriza perfiles y sub-perfiles basándose en un conjunto de palabras claves, sin utilizar procesamiento de lenguaje natural.
+ \bigskip
+    
+    
+    
+
+

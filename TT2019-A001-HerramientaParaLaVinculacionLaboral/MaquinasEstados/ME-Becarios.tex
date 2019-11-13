@@ -1,0 +1,61 @@
+\newpage
+
+\section{SM1 Becario}
+\hypertarget{SM1 Becario}{SM1 Becario}
+
+\subsection{Descripción}
+    Un Becario registrado en la plataforma puede atravesar por diferentes estados,
+    iniciando con el registro inicial. Para poder cambiar de un estado a otro se debe realizar una transición que se da cuando se cumple una condición dentro de la misma máquina de estados.
+
+   Dependiendo del estado en que se encuentre el becario se le asignará un ícono (ubicado a un costado de su nombre en la pantalla \IUref{IU2.00}{Inicio de Becarios})que le permitirá al usuario saber dicho estado (solamente estado de registrado, aceptado y rechazado). 
+   
+\IUfig[.7]{./MaquinasEstados/images/MEBecarios.png}{SM1}{Becarios}
+\subsection{Estados}
+	\begin{itemize} 
+        %%%%% Maquina de Estados ver Justificante
+        \item \textbf{Estado 0: Registro inicial}
+        Es el primer estado del becario, cuando el becario se registra en el sistema, lo hace de forma parcial, debido a que puede faltar el registro de su ubicación y/o su documentación.\\
+        
+        Una vez que se encuentre en este estado, aparecerá el icono \faExclamationCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.\\
+         Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado registre toda su información (ubicación y documentos) en el sistema.
+         
+        \item \textbf{Estado 1: Registro Completo} 
+         Es el segundo estado del becario, en este punto el becario ya registro todos sus datos, su información personal, su ubicación y sus documentos solicitados. \\
+          Una vez que se encuentre en este estado, continuara el icono \faExclamationCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+           Podrá cambiar a los siguientes estados:\\
+        Estado 2: Cambiará a este estado cuando las validaciones con los servicios web den la respuesta esperada por el sistema.\\
+        Estado 3: Cambiará a este estado cuando las validaciones con los servicios web den una respuesta diferente a la esperada por el sistema.
+        %\faTimesCircle
+        
+        \item \textbf{Estado 2: Aceptado} 
+        Es el estado que confirma la aceptación del becario al programa, esto quiere decir que el usuario ya será considerado para la vinculación laboral.\\
+        Una vez que se encuentre en este estado, aparecerá el icono \faCheckCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado cuando edite su información en el sistema.
+         Estado 4: Cambiará a este estado cuando vincule al becario con una oferta laboral.
+        
+        \item \textbf{Estado 3:Rechazado}
+         Es el estado que confirma el rechazo del becario al programa, esto quiere decir que el usuario no será considerado para la vinculación laboral por incumplir con alguno de los lineamientos del programa o por un veredicto diferente al esperado por alguno de los servicios web.\\
+        Una vez que se encuentre en este estado, aparecerá el icono \faTimesCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado cuando edite su información en el sistema.
+        
+        \item \textbf{Estado 4: Aplicando} 
+        En este estado se encuentran los becarios que ya fueron perfilados y vinculados a una oferta laboral, aunque solo se tiene el vínculo, aún no se completa la contratación.
+        \\
+       Una vez que se encuentre en este estado, continuara el icono \faCheckCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 2: Cambiará a este estado cuando la vinculación no se concrete de forma exitosa, es decir, que el becario no se ha contratado.\\
+         Estado 5: Cambiará a este estado cuando la vinculación se concrete de forma exitosa, es decir, que el becario sea contratado y comience su capacitación en la empresa con la cual se vinculó. 
+         
+         \item \textbf{Estado 5: Contratado} 
+        En este estado se encuentran los becarios que ya fueron contratados, es decir, que la vinculación se concretó de forma exitosa y el becario ya se encuentra laborando y recibiendo capacitación en la empresa con la cual se vinculó.
+        \\
+       Una vez que se encuentre en este estado, continuara el icono \faCheckCircle en la pantalla \IUref{IU2.00}{Inicio de Becarios}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 2: Cambiará a este estado cuando la vinculación concluya y el usuario siga manteniendo su misma información.\\
+         
+         
+    \end{itemize} 
+	

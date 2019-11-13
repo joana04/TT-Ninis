@@ -1,0 +1,12 @@
+\begin{BD}{Catálogo}{rolusuario}{
+		En esta tabla se tendrá registro de las los roles de un usuario en el sistema, los posibler roles del usuario son los actores del sistema.
+		\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{idUsurio}{Identificador único para el rol del usuario dentro dle sistema. Entero de longitud 11.}{Si}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{nombreRol Usuario}{Nombre del rol del usuario, es decir el actor del sistema. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Actores del sistema: \cdtRef{Actor: Becario}{Becario}, \cdtRef{Actor: Empresa}{Empresa} y \cdtRef{Actor: Administrador}{Administrador}}
+
+		\BDitem{No}{descripcionRol}{Descripción del rol de usuario dentro del sistema. Carácter (varchar) de longitud 60.}{No}{No}{Si}{Cadena de 60 dígitos.}
+		
+		
+\end{BD}

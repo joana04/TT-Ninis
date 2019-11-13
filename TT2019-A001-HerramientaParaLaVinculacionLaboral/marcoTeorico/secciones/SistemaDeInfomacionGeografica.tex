@@ -1,0 +1,57 @@
+\section{Sistemas de información geográfica}
+
+Un sistema de información geográfica es un software específico que permite a los usuarios crear consultas, integrar, analizar y representar de una forma eficiente cualquier tipo de información geográfica referenciada asociada a un territorio, conectando mapas con bases de datos. \cite{SIG}
+Profundizando en las operaciones que nos permite realizar un sistema de información geográfica podemos describirlo de la siguiente forma:
+
+
+\begin{itemize}
+  \item  Lectura, edición, almacenamiento y, en términos generales, gestión de datos espaciales.
+  \item  Análisis de dichos datos. Esto puede incluir desde consultas sencillas a la elaboración de complejos modelos, y puede llevarse a cabo tanto sobre la componente espacial de los datos (la localización de cada valor o elemento) como sobre la componente temática (el valor o el elemento en sí).
+  \item Generación de resultados tales como mapas, informes, gráficos, etc.
+\end{itemize}
+
+\subsection{Funcionamiento de un sistema de información geográfica}
+Podemos describir el funcionamiento de un sistema de información geográfica explicando los subsistemas que lo componen, entonces podemos citar los siguientes tres\cite{Func_SIG}:  
+
+\begin{itemize}
+  \item  Subsistema de datos. Se encarga de las operaciones de entrada y salida de datos, y la gestión de estos dentro del SIG. Permite a los otros subsistemas tener acceso a los datos y realizar sus funciones en base a ellos.
+  \item  Subsistema de visualización y creación cartográfica. Crea representaciones a partir de los datos (mapas, leyendas, etc.), permitiendo así la interacción con ellos. Entre otras, incorpora también las funcionalidades de edición.
+  \item Subsistema de análisis. Contiene métodos y procesos para el análisis de los datos geográficos.
+\end{itemize}
+
+\subsection{Bases de datos espaciales}
+    Para que tanto PostgreSQL como MySQL, los dos sistemas gestores de bases
+    de datos más comunes en el software libre, tengan capacidades espaciales, hay que
+    añadirles extensiones como las siguientes:
+    \begin{itemize}
+        \item PostGIS: extensión espacial para PostgreSQL con licencia BSD. No forma
+    parte del núcleo de PostgreSQL sino que constituye una especie de módulo
+    que se añade a cada base de datos a la que se quiere dotar de capacidades
+    espaciales.
+        \item  MySQLSpatial: extensión espacial para MySQL con licencia GPL. En este caso
+    es el propio equipo de desarrollo de MySQL quien lo está llevando a cabo y
+    también se basa en la especificación SFS.
+    \end{itemize}
+    
+\subsection{Servidores geográficos}
+    Los servidores geográficos son los encargados de gestionar la información geográfica, de publicarla y de generar los mapas requeridos por los clientes. Para ello
+    interactúan con el software de almacenamiento recogiendo los datos necesarios. Destacan como servidores libres:
+    \begin{itemize}
+        \item MapServer: está escrito en C y se ejecuta como un CGI (Common Gateway
+    Interface). Soporta algunos estándares del OGC y los formatos SIG más importantes. Trabaja con PostGIS y con GDAL y soporta multitud de lenguajes
+    de scripting como pueden ser PHP, Java o Perl entre muchos otros. Licencia
+    BSD.
+        \item GeoServer: está escrito en Java y soporta muchos estándares del OGC. Entre
+    ellos se encuentra el WFS-T (Web Feature Service - Transactional), que permite al usuario insertar, actualizar y borrar elementos a través de un visor web
+    o de aplicaciones de escritorio preparadas para ello. Tiene una interfaz gráfica
+    para su configuración y permite al usuario compartir, de manera sencilla y
+    rápida, toda su información geográfica a través de la web. Licencia GPL
+    \end{itemize}
+
+    
+    
+ %%\cite{ITSOM_SI} %% Agregar imagen parecida a https://tesis.ipn.mx/bitstream/handle/123456789/22347/Metodologia%20para%20el%20desarrollo%20de%20pruebas%20de%20software%20basada%20en%20metricas%20de%20funcionalidad%20y%20rendimiento.pdf?sequence=9&isAllowed=y pagina 14 
+ 
+ %%https://volaya.github.io/libro-sig/chapters/Introduccion_fundamentos.html
+ 
+ %%https://www.sgm.gob.mx/Web/MuseoVirtual/SIG/Introduccion-SIG.html

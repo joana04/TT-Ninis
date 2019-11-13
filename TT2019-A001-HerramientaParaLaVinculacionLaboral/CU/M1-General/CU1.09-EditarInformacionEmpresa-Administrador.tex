@@ -1,0 +1,123 @@
+\begin{UseCase}{CU1.09}{Editar información de la Empresa - Administrador}{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} editar la información de una empresa en el sistema, el usuario presiona el icono \faEdit correspondiente a la fila de la empresa que desea editar, 
+    el sistema obtiene la información de la empresa y la muestra en la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}, en la cual el usuario \cdtRef{Actor: Administrador}{Administrador} podrá editar la información de la empresa, finalmente presiona el botón \IUbutton{Cancelar} para cancelar la edición de la información o el botón \IUbutton{Guardar} para almacenar los cambios en el sistema. 
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá editar los datos de una empresa registrada en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+			\begin{itemize}	
+  		        \item Campo o campos que desea editar.
+			\end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			%\item \MSGref{MSG2.02}{Formato de CURP erróneo.}
+    			%\item \MSGref{MSG2.03}{Formato de Núm. de seguro social erróneo.}
+    			\item \MSGref{MSG3.01}{Formato de RFC erróneo.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.07}{Formato de Código Postal erróneo.}
+    			\item \MSGref{MSG2.09}{Formato de Número oficial erróneo} 
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se generan cambios en el registro del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Editar información }
+
+	     \UCpaso[\UCactor] Presiona el icono \faEdit correspondiente a la fila de la empresa que desea editar en la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.\Trayref{A-CU1.09}\Trayref{F-CU1.09}
+		\UCpaso[\UCsist] Obtiene la información de la empresa seleccionada.
+		\UCpaso[\UCsist] Muestra la información obtenida en la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}. 
+
+		\UCpaso[\UCactor] Ingresa los datos que desee editar de la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{E-CU1.09}
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{B-CU1.09}
+		\UCpaso[\UCsist] Verifica que RFC ingresado por el usuario cumplan con la \hyperlink{RN8}{Formato de Registro Federal de Contribuyentes } . \Trayref{C-CU1.09}
+		\UCpaso[\UCsist] Verifica que el Código Postal esté con base en la regla de negocio \hyperlink{RN7}{RN-7 C\'odigo Postal}. \Trayref{D-CU1.09}
+		\UCpaso[\UCsist] Verifica que el Número oficial (No. exterior)esté con base en la regla de negocio \hyperlink{RN12}{Número oficial(exterior)}. \Trayref{F-CU1.09}
+		\UCpaso[\UCsist] Verifica que los telefonos esten con base en la regla de negocio \hyperlink{RN10}{Número telefónico (fijo o celular)}. \Trayref{G-CU1.09}
+		\UCpaso[\UCsist] Verifica que el correo electrónico ingresado esté con base en la regla de negocio \hyperlink{RN13}{Correo electrónico}. \Trayref{H-CU1.09}
+        \UCpaso[\UCsist] Actualiza la información de la empresa en el sistema.
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+	
+	\end{UCtrayectoria}
+	
+
+	%---- A Cerrar
+	%---- B Campos vacíos
+	%---- C CURP invalido
+	%---- D No. de seguro social invalido
+	%---- E Cancelar
+	
+
+	
+	
+
+	%-------------------------------------Trayectorias alternativas A --> Cancelar
+\begin{UCtrayectoriaA}{A-CU1.09}{Eliminar becario.}{A}
+	     \UCpaso[\UCactor]Presiona el icono \faTrashO correspondiente a la fila de la empresa que desea eliminar.
+	    % \UCpaso[\UCsist] Muestra una ventana para confirmación con el mensaje %\MSGref{MSG1.04}{Eliminar becario.}
+	     
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.04}{Eliminar Becario - Administrador }.}
+	\end{UCtrayectoriaA}
+
+	%-------------------------------------Trayectorias alternativas C --> Campos vacíos
+	\begin{UCtrayectoriaA}{B-CU1.09}{Campos vacíos.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+    
+
+    %-------------------------------------Trayectorias alternativas E --> RFC errónea 
+	\begin{UCtrayectoriaA}{C-CU1.09}{El RFC no tiene el formato correcto.}{C}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG3.01}{Formato de RFC erróneo} en la pantalla \IUref{IU3.01}{Registro de Informaci\'on de Empresas}.
+			\item[- -] - - {\em Regresa al punto número 5 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+	 %-------------------------------------Trayectorias alternativas E--> CP erróneo 
+	\begin{UCtrayectoriaA}{D-CU1.09}{El Código postal no tiene el formato correcto.}{D}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.07}{Formato de Código Postal erróneo} en la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 13 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+    %-------------------------------------Trayectorias alternativas F --> Cancelar
+	\begin{UCtrayectoriaA}{E-CU1.09}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}}{E}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+  \begin{UCtrayectoriaA}{F-CU1.09}{Ver información de empresa -Administrador.}{F}
+	     \UCpaso[\UCactor]Presiona el icono \textcircled{i} correspondiente a la fila d la empresa que desea observar.
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.06}{Ver Información de Empresas - Administrador }.}
+	\end{UCtrayectoriaA}
+	
+	   	\begin{UCtrayectoriaA}{F-CU1.09}{El No. exterior no tiene el formato correcto.}{F}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.09}{Formato de Número oficial erróneo} en la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{G-CU1.09}{El teléfono ingresado no tiene el formato correcto.}{G}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.10}{Formato de número telefónico incorrecto} en la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+    \begin{UCtrayectoriaA}{H-CU1.09}{El correo electrónico ingresado no tiene el formato correcto.}{H}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.11}{Correo electrónico invalido} en la pantalla \IUref{IU1.10}{ Editar Información de la Empresa - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}

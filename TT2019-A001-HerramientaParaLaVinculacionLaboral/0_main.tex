@@ -1,0 +1,129 @@
+\documentclass[11pt]{book}
+\usepackage{sty/BookIngSoftware}
+\usepackage{sty/IS_Procesos}
+\usepackage{apacite}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
+\usepackage[usenames,dvipsnames]{color}
+
+%\usepackage[round]{natbib}
+%\usepackage[hyperfootnotes=false]{hyperref}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\hypersetup{
+ colorlinks,
+ citecolor=airforceblue,
+ %linkcolor=Red,
+% urlcolor=Blue
+}
+
+
+%=======================================
+% Head del Documento
+\title{Herramienta para la vinculación laboral}
+
+\subtitulo{Trabajo Terminal No. 2019-A001}
+
+
+
+\author{Aburto Pérez Luis Mario}{Osorio Rodríguez Eslí Joana}{Zamora Galloso Fernando}
+
+
+\organizacion{Escuela Superior de Cómputo, IPN}
+\date{25 de octubre del 2019}
+
+\begin{document}    
+
+
+   
+    \maketitle
+   
+    %%=======================================
+    %% Indices
+    \tableofcontents
+    \listoftables
+    \listoffigures
+   
+   %%%%%%%%%% DOCUMENTO 
+   \input{./introduccion/introduccion}
+	   \input{./introduccion/secciones/contextoDeTrabajo}
+	   \input{./introduccion/secciones/problematica}
+	   \input{./introduccion/secciones/solucionPropuesta}
+	   \input{./introduccion/secciones/objetivos}
+	   \input{./introduccion/secciones/justificacion}
+	   \input{./introduccion/secciones/trabajoPrevio}
+    \input{./marcoTeorico/marcoTeorico}
+       \input{./marcoTeorico/secciones/Introduccion}
+       \input{./marcoTeorico/secciones/Empresas}
+       \input{./marcoTeorico/secciones/Personas}
+       \input{./marcoTeorico/secciones/Algoritmos}
+       \input{./marcoTeorico/secciones/SistemaDeInformacion}
+       \input{./marcoTeorico/secciones/SistemaDeInfomacionGeografica}
+   
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANALISIS
+    % \input{glosario.tex}
+
+    % Capitulo Procesos
+    \input{Procesos}
+    %=======================================
+    % Capitulo Actores
+    \input{actores.tex}
+
+    %=======================================
+    % Capitulo Requerimientos del sistema
+    \input{reqSistema.tex}
+    
+    %=======================================
+    % Capitulo Reglas del negocio
+    \input{RN/RN0main.tex}
+
+    %=======================================
+    % Capitulo Casos de Uso
+    \input{CU/CU-main.tex}
+        
+    %=======================================
+    % Capitulo Mensajes
+    \input{messenges.tex}
+
+    %=======================================
+    % Capitulo Archivos
+    %\input{doc/7_documentos.tex}
+        
+    %=======================================
+    % Capitulo Pantallas
+    \input{Pantallas/Pantallas.tex}
+    
+    %=======================================
+    % Caputlo Maquinas de Estado
+   \input{MaquinasEstados/Maquinas.tex}
+    
+    %=======================================
+    % Capitulo DDatos
+    \input{BD/BD-main.tex}
+    
+    %=======================================
+    % Capitulo Technologies
+    \input{MT/MT-main.tex}
+    
+    %=======================================
+    %Lineamientos 
+    
+    \input{lineamientos.tex}
+    
+    %==============================
+    %citas
+    \bibliographystyle{apacite}
+    \chapter{Referencias}
+    \label{cap:Referencias}
+    %\section{Referencias}
+    \bibliography{referencias.bib}
+
+    
+\end{document}
+
+
+
+

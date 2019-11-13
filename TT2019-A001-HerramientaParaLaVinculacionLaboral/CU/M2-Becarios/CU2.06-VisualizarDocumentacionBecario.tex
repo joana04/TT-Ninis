@@ -1,0 +1,67 @@
+\begin{UseCase}{CU2.06}{Visualizar documentación del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} visualizar su documentación registrada en el sistema, el usuario presiona el botón  \IUbutton{Revisar} ubicado en la sección  Documentos  de la pantalla \IUref{IU2.00}{Inicio de Becarios}, el sistema obtiene la información del usuario y la muestra en la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}, en esta pantalla el usuario puede presionar el botón que contiene el nombre del archivo \IUbutton{Nombre del archivo} por cada documento que desea observar.
+       
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Becario}{Becario} podrá visualizar su documentación registrada en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		\begin{itemize}
+    		    \item Usuario \cdtRef{Actor: Becario}{Becario} registrado en el sistema.
+    		    %\item Documentos del usuario \cdtRef{Actor: Becario}{Becario} registrados en el sistema.
+    		    
+    		\end{itemize}
+    		}
+		\UCitem{Postcondiciones}{
+		   N/A}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Visualizar documentación }
+	    % \UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		\UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Documentos de la pantalla \IUref{IU2.00}{Inicio de Becarios}.\Trayref{B-CU2.06}
+		\UCpaso[\UCsist] Verifica que el usuario tenga registrados sus documentos en el sistema.\Trayref{C-CU2.05}
+		\UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}.
+		\UCpaso[\UCactor]Presiona el botón que contenga el nombre del archivo \IUbutton{Nomnre del archivo} por cada documento que desea visualizar.
+		\UCpaso[\UCsist] Abre el archivo en una pestaña nueva del navegador.
+        \UCpaso[\UCactor]Presiona el botón \IUbutton{Cerrar} de la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}.\Trayref{A-CU2.06}
+		
+	\end{UCtrayectoria}
+	
+
+	%---- A Error en el sistema
+
+	
+	%---------------------------------------Trayectoria Alternativa A --> Editar
+	\begin{UCtrayectoriaA}{A-CU2.06}{Editar documentos}{A}
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Editar} de la pantalla\IUref{IU2.06}{Visualización de Documentos de Becario}.
+	    \item[- -] - - {\em Extiende al caso de uso \cdtRef {CU2.09}{Editar documentación del Becario}.} 
+	\end{UCtrayectoriaA}
+			%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{B-CU2.06}{Ingreso por menú superior.}{B}
+	    \UCpaso[\UCactor]Presiona la opción Mis documentos en el menú superior de cualquier pantalla en el sistema. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	\begin{UCtrayectoriaA}{C-CU2.06}{No tiene documentación registrada.}{C}
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.02}{Registro de Documentos de Becarios}. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Extiende al punto número 3 de la trayectoria principal del caso de uso \cdtRef{CU2.02}{Registrar documentación del Becario}.}
+	\end{UCtrayectoriaA}
+	
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+
+	\begin{UCExtenssionPoint}{Editar documentación}{El usuario desea editar su documentación registrada en el sistema.}{Paso 7 de la trayectoria principal}{Caso de uso  \cdtRef{CU2.09}{Editar documentación del Becario}} 
+	\end{UCExtenssionPoint}
+	
+	\begin{UCExtenssionPoint}{Registrar documentación}{El usuario debe registrar su documentación en el sistema.}{Paso 2 de la trayectoria principal}{Paso 2 del caso de uso \cdtRef{CU2.02}{Registrar documentación del Becario}} 
+	\end{UCExtenssionPoint}

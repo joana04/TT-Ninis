@@ -1,0 +1,111 @@
+\begin{UseCase}{CU2.04}{Registrar ubicación del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} registrar su ubicación en el sistema, el \cdtRef{Actor: Becario}{Becario} presiona \IUbutton{Siguiente} de la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}, el sistema muestra la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}, el solicitante podrá ingresar los datos solicitados en la pantalla, después podrá presionar el  botón \IUbutton{Cancelar} para cancelar el registro de sus datos o el botón \IUbutton{Guardar} para concluir el registro se su ubicación en el sistema.    
+    
+    %el botón \IUbutton{Revisar} en la sección Ubicación de la pantalla  \IUref{IU2.00}{Inicio de Becarios}, el sistema muestra la pantalla  \IUref{IU2.05}{Visualización de Dirección de Becario} en la cual el usuario podrá presionar el botón \IUbutton{Editar} para ingresar sus datos geográficos, el sistema muestra la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}, el solicitante podrá ingresar los datos solicitados en la pantalla, después podrá presionar el  botón \IUbutton{Cancelar} para cancelar el registro de sus datos o el botón \IUbutton{Guardar} para concluir el registro se su ubicación en el sistema.    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El solicitante podrá registrar sus datos geográficos en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+			\begin{itemize}	
+  		        \item Calle.
+  		        \item No. exterior.
+  		        \item No. interior.
+  		        \item Colonia.
+  		        \item Municipio o Delegación.
+  		        \item Entidad federativa.
+  		        \item Código Postal.
+  		       
+			\end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.07}{Formato de Código Postal erróneo.}
+    			\item \MSGref{MSG2.09}{Formato de Número oficial  erróneo}
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se genera el registro de la ubicación del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Registrar información geográfica }
+	    %\UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		%\UCpaso[\UCactor] Presiona el botón \IUbutton{Revisar} en la sección de Ubicación de la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		%\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}. 
+		%\UCpaso[\UCactor] Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}.\Trayref{A-CU2.04}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Siguiente} de la pantalla \IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+	    \UCpaso[\UCactor] Ingresa los datos solicitados en la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+	    \UCpaso[\UCsist] Verifica que el Código Postal esté con base en la regla de negocio \hyperlink{RN7}{RN-7 C\'odigo Postal}. \Trayref{B-CU2.04}
+	    %\UCpaso[\UCsist] Completa los campos relacionados al código postal.
+	    \UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{C-CU2.04}
+	    \UCpaso[\UCsist] Verifica que el Número oficial (No. exterior)esté con base en la regla de negocio \hyperlink{RN12}{Número oficial(exterior)}. \Trayref{D-CU2.04}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{A-CU2.04}
+		\UCpaso[\UCsist] Guarda la ubicación del becario en el sistema. 
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.01}{Registro exitoso.} en la pantalla \IUref{IU1.01}{Índex}.
+
+		
+	\end{UCtrayectoria}
+	
+
+	%---- A botón Cerrar
+	%---- B Campos vacíos
+	%---- C CURP invalido
+	%---- D No. de seguro social invalido
+	%---- E CP erróneo
+	
+	
+	%---- F formato incorrecto 
+	%---- G tamaño incorrecto 
+
+	
+	
+    %-------------------------------------Trayectorias alternativas F --> Cancelar
+	\begin{UCtrayectoriaA}{A-CU2.04}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}}{A}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada.} en la pantalla \IUref{IU1.01}{Índex}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+   
+	 %-------------------------------------Trayectorias alternativas B--> CP erróneo 
+	\begin{UCtrayectoriaA}{B-CU2.04}{El Código postal no tiene el formato correcto.}{B}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.07}{Formato de Código Postal erróneo.} en la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    	%-------------------------------------Trayectorias alternativas C --> Campos vacíos
+	\begin{UCtrayectoriaA}{C-CU2.04}{Campos vacíos.}{C}
+		\UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+	    
+	    \item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+    
+
+
+
+	
+	\begin{UCtrayectoriaA}{D-CU2.04}{El No. exterior no tiene el formato correcto.}{D}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.09}{Formato de Número oficial  erróneo} en la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}.
+			\item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+%-------------------Puntos de extensión 
+%	\subsection{Puntos de Extensión del Caso de Uso}
+	
+%	\begin{UCExtenssionPoint}{Revisar información}{El usuario desea visualizar su información personal registrada en el sistema.}{Paso 3 de la trayectoria principal}{\cdtRef{CU2.03}{Visualizar información del Becario}} 
+%	\end{UCExtenssionPoint}
+	
+%	\begin{UCExtenssionPoint}{Revisar documentos}{El usuario desea visualizar sus documentos registrados en el sistema.}{Paso 3 de la trayectoria principal}{\cdtRef{CU2.06}{Visualizar documentación del Becario}} 
+%	\end{UCExtenssionPoint}
+

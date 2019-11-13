@@ -1,0 +1,104 @@
+
+\begin{UseCase}{CU3.02}{Registrar documentación del Empresa}{
+    Permite al usuario \cdtRef{Actor: Empresa}{Empresa} registrar su documentación en el sistema, una vez que el usuario inicio sesión en la plataforma y se encuentra en la pantalla \IUref{IU3.00}{Inicio de Empresas}, el usuario presiona el botón \IUbutton{Revisar} ubicado en la sección Documentos de la pantalla \IUref{IU3.00}{Inicio de Empresas} o selecciona la opción Mis documentos en el menú superior de la pantalla en la que se encuentre ubicado, el sistema muestra la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}, usuario procederá a presionar el botón \IUbutton{Seleccionar archivo} por cada archivo de la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}, una vez que cargo los archivos en el sistema, presiona el botón  \IUbutton{Guardar} y el sistema guardará los archivos del usuario.    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Empresa}{Empresa}}
+		\UCitem{Propósito}{El solicitante podrá registrar sus documentos en el sistema.}
+		\UCitem{Entradas}{Documentación ingresada por el usuario:
+			\begin{itemize}	
+			    \item RFC.
+  		        %\item Acta constitutiva.
+  		        \item Identificación oficial.
+  		        \item Comprobante de domicilio.
+  		       
+			\end{itemize}}
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.05}{Formato de archivo incorrecto.}
+    			\item \MSGref{MSG2.06}{Excede tamaño de archivo permitido.}
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario \cdtRef{Actor: Empresa}{Empresa} registrado en el sistema}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se genera el registro de documentos del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Registrar documentos de la Empresa}
+	
+		% \UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+	    \UCpaso[\UCactor] Presiona el botón \IUbutton{Revisarr} en la sección de Documentos de la pantalla \IUref{IU3.00}{Inicio de Empresas}.\Trayref{E-CU3.02}
+	%	\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.06}{Visualización de Documentos de Empresa} 
+	%	\UCpaso[\UCactor] Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU2.06}{Visualización de Documentos de Empresa}.\Trayref{A-CU2.04}
+
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}. 
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Seleccionar archivo} por cada archivo solicitado en la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}.
+		\UCpaso[\UCactor] Selecciona los archivos que desea subir al sistema. 
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{D-CU3.02}
+		\UCpaso[\UCsist] Verifica que todos los archivos adjuntos estén con base en la regla de negocio \hyperlink{RN5}{RN-5 Adjuntar un archivo válido}. \Trayref{B-CU3.02}
+	    \UCpaso[\UCsist] Verifica que todos los archivos adjuntos estén con base en la regla de negocio \hyperlink{RN6}{RN-6 Tamaño de archivo incorrecto}. \Trayref{C-CU3.02}
+		
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{A-CU3.02}
+		\UCpaso[\UCsist] Guarda los archivos del Empresa en el sistema. 
+		
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.01}{Registro exitoso} en la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+		\UCpaso[\UCsist] Valida con el servicio web del SAT(Servicio de Administración Tributaria ) la STPS(Secretaria de Trabajo y Previsión Social ).
+
+		
+	\end{UCtrayectoria}
+	
+
+
+	%---- A Cancelar 
+
+	%---- B formato incorrecto 
+	%---- C tamaño incorrecto 
+
+	
+	
+
+	
+	%-------------------------------------Trayectorias alternativas A --> Cancelar
+	\begin{UCtrayectoriaA}{A-CU3.02}{Presiona el botón \IUbutton{Cancelar} de la pantalla   \IUref{IU3.02}{Registro de Documentos de Empresa}}{A}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+
+%------------------------------------- trayectoria alternativa B--> Formato incorrecto 
+	
+	\begin{UCtrayectoriaA}{B-CU3.02}{Formato incorrecto.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.05}{Formato de archivo incorrecto} en la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}.
+	    \item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+%------------------------------------------Trayectoria alternativa C-->Tamaño incorrecto
+	\begin{UCtrayectoriaA}{C-CU3.02}{Tamaño de archivo incorrecto.}{C}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.06}{Excede tamaño de archivo permitido} en la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}.
+	    \item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+		%-------------------------------------Trayectorias alternativas D--> Campos vacíos
+	\begin{UCtrayectoriaA}{D-CU3.02}{Campos vacíos.}{D}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU3.02}{Registro de Documentos de Empresa}.
+	    \item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+		%-------------------------------------Trayectorias alternativas E--> Menú superior
+	\begin{UCtrayectoriaA}{E-CU3.02}{Ingreso por menú superior.}{E}
+	    \UCpaso[\UCactor] Selecciona la opción Mis documentos en el menú superior de la pantalla en la que se encuentre.
+	
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+
+	

@@ -1,0 +1,128 @@
+%=========================================================
+\chapter{Actores del sistema}
+\label{cap:actores}
+En el presente capítulo se definen los actores que participan en el sistema.\\
+
+\IUfig[.7]{./images_Gen/Actores.png}{Actores}
+
+\newpage
+%---------------------------------------------------------
+% Actor - ADMINISTRADOR  
+\begin{Actor}{\hypertarget{Actor: Administrador}{\section{Administrador}}}{
+	Individuo que forma parte del recurso humano del sistema, se encarga de implementar, configurar, mantener, controlar, documentar y asegurar el funcionamiento del mismo.
+}
+\begin{list}{}{}
+    \item[Area:] \ISenter
+    \begin{itemize}
+		\item Administración.
+    \end{itemize}
+    \item[Reponsabilidades:] \ISenter
+    \begin{itemize}
+		\item Dar mantenimiento al sistema.
+		\item Administrar usuarios.
+		\item Monitorear la información ingresada por los usuarios.
+		\item Mantenimiento de la documentación.
+		\item Brindar soporte técnico a usuarios.
+		\item Utilizar los datos personales a los que tenga acceso, en virtud de sus funciones, únicamente para el desempeño de la actividad laboral.
+        \item Guardar el secreto y la confidencialidad de toda la información a la que tenga acceso.
+        \item Abstenerse de borrar, destruir, dañar, alterar o modificar cualquier información relacionada con datos personales contenidos en los sistemas de información sin la autorización expresa del responsable del fichero, salvo que le haya sido asignada dicha función.
+        \item Abstenerse de realizar copias, transmisiones, comunicaciones o cesiones de cualquier información relacionada con datos de carácter personal contenidos en los sistemas de información sin la autorización expresa del responsable del fichero, salvo que le haya sido asignada dicha función.
+
+ 
+
+    \end{itemize}
+%    \item[Perfil:] \ISenter
+%    \begin{itemize}
+%		\item Conocer los lineamientos del sistema para todos los usuarios.
+%    \end{itemize}
+%    \item[Cantidad:] \ISenter
+%    \begin{itemize}
+%		\item 1 administrador.
+%    \end{itemize}
+\end{list}
+\end{Actor}
+
+\newpagehttps://www.overleaf.com/8842229772jdyzmtxxsswm
+%---------------------------------------------------------
+% Actor - PERSONA
+\begin{Actor}{\hypertarget{Actor: Becario}{\section{Becario}}}{
+	Persona que tiene el interés de registrarse en el sistema y cumple con los requisitos\cdtRef{RN1}{RN-1 Perfil de Becario} para ingresar al programa.
+	
+}
+\begin{list}{}{}
+    \item[Area:] \ISenter
+    \begin{itemize}
+		\item Módulo Becario
+    \end{itemize}
+    \item[Reponsabilidades:] \ISenter
+    \begin{itemize}
+        \item Ingresar información real al momento de hacer su registro.
+        \item Seguir buenas prácticas de seguridad en la creación de contraseñas
+        \item  Tener claro que los datos que se manejan no son propiedad del que lo hace, sino del propio interesado, quienes los cede para un determinado uso o fin.
+        \item Cambiar periódicamente la contraseña de autenticación de usuario.
+		\item Manetener actualizada su informcaión.
+		\item Responder o atender las notificaciones del sistema.
+		\item Aceptar o declinar según sea el caso de las vacantes que le sean ofrecidas.
+    \end{itemize}
+\end{list}
+\end{Actor}
+
+%---------------------------------------------------------
+% Actor - EMPRESA Fisica y moral
+% Actor - EMPRESA Fisica
+\begin{Actor}{\hypertarget{Actor: Empresa}{\section{Representante de Empresa}}}{
+El representante de una empresa es una persona que actúa en nombre de la misma para realizar diversos trámites. Puede asumir compromisos y tomar decisiones que serán atribuidas a la empresa. En el caso de ser una persona física puede ser el o ella misma quien represente sus intereses.
+}
+
+%Organización comercial o industrial que se dedica a fabricar objetos, dar servicios o espectáculos, vender cosas, etc.
+\\\\
+%{\subsection{Persona Física}}{
+%Es un individuo que realiza cualquier actividad económica (vendedor, comerciante, empleado, etc.),tiene obligaciones que cumplir y derechos. 
+%	\\
+%}
+\begin{list}{}{}
+    \item[Area:] \ISenter
+    \begin{itemize}
+		\item Módulo de Empresa
+    \end{itemize}
+    \item[Reponsabilidades:] \ISenter
+    \begin{itemize}
+        \item Ingresar información real al momento de hacer su registro.
+        \item Seguir buenas prácticas de seguridad en la creación de contraseñas
+        \item  Tener claro que los datos que se manejan no son propiedad del que lo hace, sino del propio interesado, quienes los cede para un determinado uso o fin.
+        \item Cambiar periódicamente la contraseña de autenticación de usuario.
+		\item Manetener actualizada su informcaión.
+		\item Responder o atender las notificaciones del sistema.
+		\item Registrar las vacantes que desea cubrir.
+		\item Administrar (Actualizar, modificar ó dar de baja) las vacantes que publica.
+		\item Brindar seguimiento y retroalimentación al desempeño de los becarios.
+		\item Aceptar o declinar según sea el caso de los postulantes a sus vacantes.
+    \end{itemize}
+\end{list}
+    
+%{\subsection{Persona Moral}}{
+	%Una persona moral es una agrupación de individuos que se unen con un fin específico, por ejemplo, una sociedad %mercantil o una asociación civil.
+%	\\
+%}
+%\begin{list}{}{}
+%    \item[Area:] \ISenter
+%    \begin{itemize}
+%		\item n/a.
+ %   \end{itemize}
+  %  \item[Reponsabilidades:] \ISenter
+   % \begin{itemize}
+%		\item Registrarse en el programa y manetener actualizada su informcaión para poder ofrecer vacantes.
+    %\end{itemize}
+    %\item[Perfil:] \ISenter
+%    \begin{itemize}
+%		\item Estar reguladas por la ley.
+%		\item Cumplir con todas sus obligaciones con el SAT
+ %   \end{itemize}
+ %   \item[Cantidad:] \ISenter
+%    \begin{itemize}
+%		\item 1 representante por empresa.
+%    \end{itemize}
+%\end{list}
+\end{Actor}
+
+

@@ -1,0 +1,69 @@
+
+
+\begin{UseCase}{CU1.01}{Iniciar Sesión}{
+	%%Descripcion
+	Permite al usuario validar su identidad ante el sistema, el usuario ingresará su correo y contraseña con las cuales se registró en el sistema en la pantalla \IUref{IU1.01}{Índex}, presiona el botón \IUbutton{Iniciar} y el usuario podrá acceder a la plataforma.
+\bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem{Actor}{\cdtRef{Actor: Becario}{Becario}, \cdtRef{Actor: Empresa}{Empresa} y \cdtRef{Actor: Administrador}{Administrador}.}%%Hacer la referencia al Actor
+		\UCitem{Propósito}{Poder ingresar a la plataforma con el rol especificado para hacer uso de esta.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+		    \begin{itemize}	
+		       \item Correo.
+		       \item Contraseña.
+		    \end{itemize}
+		}
+
+		\UCitem{Salidas}{
+		    \begin{itemize}	
+		        \item Pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		       \item Pantalla \IUref{IU3.00}{Inicio de Empresas}.
+		       \item Pantalla \IUref{IU1.02}{Inicio de Administrador}.
+		       \item \MSGref{MSG1.02}{Correo y/o contraseña incorrectos}.
+		       \item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+		       
+		    \end{itemize}
+		    }
+		\UCitem{Precondiciones}{ 
+			El sistema debe contener las credenciales del usuario.
+		}
+		\UCitem{Postcondiciones}{Iniciar sesión en el sistema con el rol correspondiente.}
+		
+	\end{UseCase}
+	%-------------------------------------- COMIENZA descripción Trayectoria Iniciar sesión
+	\begin{UCtrayectoria}{Iniciar Sesión}
+	    \UCpaso[\UCactor] Ingresa en el navegador la dirección electronica correspondiente al sistema. http://35.224.218.161/TTVinculacionLaboral/index.htm
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.01}{Índex}.
+		\UCpaso[\UCactor] Introduce los elementos solicitados por la pantalla \IUref{IU1.01}{Índex}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Iniciar} de la pantalla \IUref{IU1.01}{Índex}. 
+		\UCpaso[\UCsist] Verifica que los campos solicitado en la pantalla \IUref{IU1.01}{Índex} cumplan la regla de negocio \hyperlink{RN2}{RN-2 Campo obligatorio}. \Trayref{A-CU1.01}
+		\UCpaso[\UCsist] Busca el registro que coincida con el correo ingresado. \Trayref{B-CU1.01}
+		\UCpaso[\UCsist] Busca el registro que coincida la contraseña ingresada. \Trayref{B-CU1.01}
+		\UCpaso[\UCsist] Obtiene el tipo de usuario del registro obtenido.
+		\UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}, la pantalla \IUref{IU3.00}{Inicio de Empresas} o la pantalla \IUref{IU1.02}{Inicio de Administrador} con la información del usuario.
+	\end{UCtrayectoria}
+	%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{A-CU1.01}{Campos vacíos.}{A}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos }en la pantalla \IUref{IU1.01}{Índex}.
+	    \item[- -] - - {\em Regresa al punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{B-CU1.01}{El correo y/o contraseña que ingresados por el usuario no coincide con algún registro en el sistema.}{B}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG1.02}{Correo y/o contraseña incorrectos} en la pantalla \IUref{IU1.01}{Índex}.
+		\item [- -] - - {\em Continúa en el punto número 3 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+	
+	\begin{UCExtenssionPoint}{Recuperar contraseña}{El usuario desea recuperar su contraseña para ingresar al sistema.}{Paso 2 de la trayectoria principal}{\cdtRef{CUX.XX}{Recuperar contraseña}} 
+	\end{UCExtenssionPoint}
+	
+	\begin{UCExtenssionPoint}{Registrarse como becario en el sistema}{El usuario desea registrarse en el sistema.}{Paso 2 de la trayectoria principal}{\cdtRef{CU2.01}{Registrar información del Becario}} 
+	\end{UCExtenssionPoint}
+	
+	\begin{UCExtenssionPoint}{Registrarse como empresa en el sistema}{El usuario desea registrarse en el sistema.}{Paso 2 de la trayectoria principal}{\cdtRef{CU1.01}{Registrar información de la Empresa}} 
+	\end{UCExtenssionPoint}

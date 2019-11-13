@@ -1,0 +1,66 @@
+\begin{UseCase}{CU1.07}{Eliminar Empresa - Administrador}{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} eliminar una empresa registrada en el sistema, en la pantalla  \IUref{IU1.06}{Ver Empresas - Administrador} el administrador presiona el icono \faTrashO correspondiente la fila de la empresa que desea eliminar, el sistema muestra una ventana para confirmación como en la pantalla \IUref{IU1.08}{Eliminar Empresa - Administrador} con el mensaje \MSGref{MSG1.05}{Eliminar empresa}, el administrador confirma la eliminación de la empresa, el sistema elimina el registro de la empresa en el sistema.
+    
+    
+  %  \textcircled{i}
+%\faTrashO
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá eliminar una empresa registrada en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+    			\item Pantalla \IUref{IU1.08}{Eliminar Empresa - Administrador}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		N/A}
+		\UCitem{Postcondiciones}{
+		   Empresa eliminada del sistema.}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Eliminar Empresa }
+	
+%		\UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+%	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.02}{Inicio de Administrador}.
+%	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Ver Empresas de la pantalla \IUref{IU1.02}{Inicio de Administrador}.
+%		\UCpaso[\UCsist] Obtiene la información de las empresas registradas en el sistema.
+%		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+		\UCpaso[\UCactor] Presiona el icono \faTrashO correspondiente a la fila de la empresa que desea eliminar en la pantalla \IUref{IU1.06}{Ver Empresas - Administrador} .\Trayref{A-CU1.07}\Trayref{C-CU1.07}
+		\UCpaso[\UCsist] Muestra una ventana para confirmación como en la pantalla \IUref{IU1.08}{Eliminar Empresa - Administrador} con el mensaje \MSGref{MSG1.05}{Eliminar empresa}.
+		\UCpaso[\UCactor]Presiona el botón \IUbutton{Aceptar} de la ventana de confirmación.\Trayref{B-CU1.07}
+		\UCpaso[\UCsist] Obtiene la información de la empresa.
+		\UCpaso[\UCsist] Elimina la información de la empresa.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}. 
+       
+		
+	\end{UCtrayectoria}
+
+%----------------Trayectoria alternativa A --> ver información 
+\begin{UCtrayectoriaA}{A-CU1.07}{Ver información de empresa -Administrador.}{A}
+	     \UCpaso[\UCactor]Presiona el icono \textcircled{i} correspondiente a la fila de ale empresa que desea observar.
+	    \item[- -] - - {\em Extiende al \cdtRef{CU1.05}{Ver Empresas - Administrador }.}
+	\end{UCtrayectoriaA}
+	
+ %-------------------------------------Trayectorias alternativas B--> Cancelar
+	\begin{UCtrayectoriaA}{B-CU1.04}{Presiona el botón \IUbutton{Cancelar} de la ventana de confirmación }{B}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG1.05}{Eliminar empresa} en la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+
+	
+
+	
+\begin{UCtrayectoriaA}{C-CU1.07}{Editar becario.}{C}
+	     \UCpaso[\UCactor]Presiona el icono  \faEdit correspondiente a la fila de la empresa que desea editar.
+	    % \UCpaso[\UCsist] Muestra una ventana para confirmación con el mensaje %\MSGref{MSG1.04}{Eliminar becario.}
+	     
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.09}{Editar Empresa- Administrador }.}
+	\end{UCtrayectoriaA}

@@ -1,0 +1,12 @@
+\begin{BD}{Tabla}{usuario}{
+		En esta tabla se tendrá registro de las cuentas de personal para ingresar al sistema.
+\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{correo}{Correo electrónico con el que el usuario se identificará en el sistema. Carácter (varchar) de longitud 60.}{Si}{Si}{No}{Cadena de 10 dígitos. Véase  \hyperlink{RN13}{RN13-Correo electrónico}}
+		
+		\BDitem{No}{idRolUsuario}{Identificador del rol del usuario en el sistema.Entero de longitud 11.}{Si}{No}{Si}{Números enteros.}
+
+		\BDitem{No}{contrasena}{Contraseña del usuario para ingresar a la contraseña. Carácter (varchar) de longitud 20.}{Si}{No}{Si}{Cadena de 20 dígitos.}
+		
+		
+\end{BD}

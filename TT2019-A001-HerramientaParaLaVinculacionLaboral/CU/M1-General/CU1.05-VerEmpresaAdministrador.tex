@@ -1,0 +1,53 @@
+\begin{UseCase}{CU1.05}{Ver Empresas - Administrador }{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} visualizar los empresas registradas en el sistema, el usuario presiona el botón \IUbutton{Revisar} ubicado en la sección  Ver Empresas en la pantalla  \IUref{IU1.02}{Inicio de Administrador} o presiona la opción Ver Empresas en el menú superior, el sistema obtiene las empresas registradas en el sistema y  las muestra en la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}
+    organizados en una tabla que da la información principal de la empresa y brinda las opciones de visualizar la información, editar y eliminar la empresa. 
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá visualizar las empresas registradas en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU1.06}{Ver Empresas - Administrador}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		N/A}
+		\UCitem{Postcondiciones}{
+		   N/A}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Visualizar empresas}
+	
+%		\UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+%	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.02}{Inicio de Administrador}.
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Ver Empresas de la pantalla \IUref{IU1.02}{Inicio de Administrador}.\Trayref{A-CU1.05}
+		\UCpaso[\UCsist] Obtiene la información de las empresas registradas en el sistema.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.06}{Ver Empresas - Administrador}. 
+       
+		
+	\end{UCtrayectoria}
+	%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{A-CU1.05}{Ingreso por menú superior.}{A}
+	    \UCpaso[\UCactor]Presiona la opción Ver Empresas en el menú superior de cualquier pantalla en el sistema. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+	
+
+	
+	\begin{UCExtenssionPoint}{Ver información de la empresa}{El usuario desea visualizar la información de una empresa en específico.}{El usuario presiona el icono \textcircled{i} correspondiente a la empresa que desea revisar.}{Caso de uso \cdtRef
+	{CU1.06}{Ver Información de Empresas - Administrador}.} 
+	\end{UCExtenssionPoint}
+	\begin{UCExtenssionPoint}{Editar empresa}{El usuario desea editar la información de una empresa del sistema.}{El usuario presiona el icono \faEdit correspondiente a la empresa que desea editar.}{Caso de uso \cdtRef{CU1.09}{Editar Empresa - Administrador}} 
+	\end{UCExtenssionPoint}
+	\begin{UCExtenssionPoint}{Eliminar empresa}{El usuario desea eliminar una empresa del sistema.}{El usuario presiona el icono \faTrashO correspondiente a la empresa que desea eliminar.}{Caso de uso \cdtRef
+	{CU1.07}{Eliminar Empresa - Administrador}}
+	\end{UCExtenssionPoint}
+

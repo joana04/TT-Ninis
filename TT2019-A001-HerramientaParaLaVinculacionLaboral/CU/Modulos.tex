@@ -1,0 +1,49 @@
+\section{Módulos del sistema}
+\IUfig[.7]{./CU/modulos.png}{IMG-Mod}{Módulos del sistema}
+
+
+
+\subsubsection{M1-General}
+Módulo encargado de los inicios de sesión y que contiene el submódulo Administrador, con el objetivo de manejar de forma general el sistema.
+\begin{itemize}
+    \item Administrador:\\
+    Modulo encargado de la gestión de los becarios y las empresas.
+
+\end{itemize}
+
+\subsubsection{M2-Becarios}
+Módulo integrado por los submódulos Registro, Visualización y Edición, con el objetivo de administrar las interacciones entre los becarios y la herramienta.
+\begin{itemize}
+    \item Registro:\\
+    Módulo encargado del registro de información, ubicación y documentos del becario en el sistema.
+    \item Visualización:\\
+    Módulo encargado de la visualización de información, ubicación y documentos del becario en el sistema.
+    \item Edición:\\
+    Módulo encargado de la edición de información, ubicación y documentos del becario en el sistema.
+\end{itemize}
+
+
+\subsubsection{M2-Empresas}
+Módulo integrado por los submódulos Registro, Visualización y Edición, con el objetivo de administrar las interacciones entre las empresas y la herramienta.
+
+\begin{itemize}
+    \item Registro:\\
+    Módulo encargado del registro de información, ubicación y documentos de la empresa en el sistema.
+    \item Visualización:\\
+    Módulo encargado de la visualización de información, ubicación y documentos de la empresa en el sistema.
+    \item Edición:\\
+    Módulo encargado de la edición de información, ubicación y documentos de la empresa en el sistema. 
+\end{itemize}
+
+
+\subsubsection{Validación}
+Representación de la interacción entre los submódulos de registro y edición con los servicios web simulados de la SEP el IMSS, el SAT y la STPS.\\
+Actualmente no se cuenta, ni se contarán con los datos de la SEP, el IMSS, el SAT y la STPS, por lo tanto, simularemos que estas entidades públicas cuentan con un servicio que responde información del solicitante o de la empresa a través de un servicio web.
+
+\newpage
+\section{Diagramas de Casos de Uso}
+\IUfig[.6]{./CU/Administrador.png}{CU-Administrador}{Diagrama CU Administrador}
+\IUfig[.92]{./CU/Becario.png}{CU-Becario}{Diagrama CU Becario}
+\IUfig[.9]{./CU/Empresa.png}{CU-Empresa}{Diagrama CU Empresa}
+\bigskip
+

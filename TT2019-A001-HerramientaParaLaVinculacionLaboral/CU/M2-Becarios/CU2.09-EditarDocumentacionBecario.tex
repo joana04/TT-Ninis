@@ -1,0 +1,99 @@
+\begin{UseCase}{CU2.09}{Editar documentación del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} editar su documentación registrada en el sistema, el usuario presiona el botón  %\IUbutton{Revisar} ubicado en la sección  Documentos  de la pantalla \IUref{IU2.00}{Inicio de Becarios}, el sistema obtiene los documentos del usuario y la muestra en la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}, en esta pantalla el usuario presiona el botón 
+    \IUbutton{Editar} en la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario} , el sistema recupera la información del usuario y la muestra en la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}, esta pantalla le permite al usuario editar sus datos en el sistema, una vez que selecciono los archivos que desea  cambiar puede presionar el botón \IUbutton{Cancelar} para cancelar la edición de su información o el botón \IUbutton{Guardar} para almacenar los cambios en el sistema. 
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Becario}{Becario} podrá editar sus datos en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+			\begin{itemize}	
+  		        \item Campo o campos que desea editar.
+			\end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.05}{Formato de archivo incorrecto.}
+    			\item \MSGref{MSG2.06}{Excede tamaño de archivo permitido.}
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se generan cambios en el registro del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Editar información }
+	   % \UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    % \UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+	    %\UCpaso[\UCactor] Presiona el botón \IUbutton{Revisar} de la sección de Ubicación de la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+	    %\UCpaso[\UCsist] Obtiene la información del usuario.
+		%\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}. 
+        \UCpaso[\UCactor]Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}.\Trayref{A-CU2.09}
+        \UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}. 
+		\UCpaso[\UCactor] Ingresa los datos que desee editar de la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{E-CU2.09}
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{B-CU2.09}
+	    \UCpaso[\UCsist] Verifica que todos los archivos adjuntos estén con base en la regla de negocio \hyperlink{RN5}{RN-5 Adjuntar un archivo válido}. \Trayref{C-CU2.09}
+	    \UCpaso[\UCsist] Verifica que todos los archivos adjuntos estén con base en la regla de negocio \hyperlink{RN6}{RN-6 Tamaño de archivo incorrecto}. \Trayref{D-CU2.09}
+		
+        \UCpaso[\UCsist] Actualiza la información del solicitante en el sistema.
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+	    \UCpaso[\UCsist] Valida con los servicios web de la SEP (Secretaria de Educación Publica), el IMSS (Instituto Mexicano del Seguro Social)  y la STPS(Secretaria de Trabajo y Previsión Social ).
+	
+	\end{UCtrayectoria}
+	
+
+	%---- A Cerrar
+	%---- B Campos vacíos
+	%---- C CURP invalido
+	%---- D No. de seguro social invalido
+	%---- E Cancelar
+	
+
+	
+	
+
+	%-------------------------------------Trayectorias alternativas A --> Cancelar
+	\begin{UCtrayectoriaA}{A-CU2.09}{Presiona el botón \IUbutton{Cerrar} de la pantalla \IUref{IU2.06}{Visualización de Documentos de Becario}}{A}
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+	%-------------------------------------Trayectorias alternativas B --> Campos vacíos
+	\begin{UCtrayectoriaA}{B-CU2.09}{Campos vacíos.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}.
+	    \item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+%------------------------------------- trayectoria alternativa C --> Formato incorrecto 
+	
+	\begin{UCtrayectoriaA}{C-CU2.09}{Formato incorrecto.}{C}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.05}{Formato de archivo incorrecto} en la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}.
+	    \item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+%------------------------------------------Trayectoria alternativa D-->Tamaño incorrecto
+	\begin{UCtrayectoriaA}{C-CU2.09}{Tamaño de archivo incorrecto.}{C}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.06}{Excede tamaño de archivo permitido} en la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}.
+	    \item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+    
+	 %-------------------------------------Trayectorias alternativas E--> Cancelar
+	\begin{UCtrayectoriaA}{E-CU2.09}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU2.09}{Edición de Documentos de Becario}}{E}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+
+ 

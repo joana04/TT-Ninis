@@ -1,0 +1,61 @@
+
+\begin{UseCase}{CU2.05}{Visualizar ubicación del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} visualizar su información geográfica registrada en el sistema, el usuario presiona el botón  \IUbutton{Revisar} ubicado en la sección Ubicación de la pantalla \IUref{IU2.00}{Inicio de Becarios}, el sistema obtiene la información del usuario y la muestra en la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}, en caso de que el usuario no tenga registrada su información geográfica extiende al caso de uso \cdtRef{CU2.04}{Registrar ubicación del Becario}.
+       
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Becario}{Becario} podrá visualizar su información geográfica registrada en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario \cdtRef{Actor: Becario}{Becario} registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		   N/A}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Visualizar información }
+	    % \UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+		\UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Ubicación de la pantalla \IUref{IU2.00}{Inicio de Becarios}. \Trayref{B-CU2.05}
+		\UCpaso[\UCsist] Verifica que el usuario tenga registrada infromcacion geográfica en el sistema.\Trayref{C-CU2.05}
+		\UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la información en la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}. 
+        \UCpaso[\UCactor]Presiona el botón \IUbutton{Cerrar} de la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}.\Trayref{A-CU2.05}
+		
+	\end{UCtrayectoria}
+	
+
+	%---- A Error en el sistema
+
+	
+	%---------------------------------------Trayectoria Alternativa A --> Editar
+	\begin{UCtrayectoriaA}{A-CU2.05}{Editar información}{A}
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU2.05}{Visualización de Dirección de Becario}.
+	    \item[- -] - - {\em Extiende a \cdtRef{CU2.08}{Editar información geográfica del Becario}.} 
+	\end{UCtrayectoriaA}
+	
+			%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{B-CU2.05}{Ingreso por menú superior.}{B}
+	    \UCpaso[\UCactor]Presiona la opción Mi ubicación en el menú superior de cualquier pantalla en el sistema. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	\begin{UCtrayectoriaA}{C-CU2.05}{No tiene información registrada.}{C}
+	    \UCpaso[\UCsist] Comienza el muestra la pantalla \IUref{IU2.03}{Registro de Domicilio de Becarios}. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Extiende al punto número 3 de la trayectoria principal del caso de uso \cdtRef{CU2.04}{Registrar ubicación del Becario}.}
+	\end{UCtrayectoriaA}
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+
+	\begin{UCExtenssionPoint}{Editar información geográfica}{El usuario desea editar su información geográfica registrada en el sistema.}{Paso 4 de la trayectoria principal}{Caso de uso  \cdtRef{CU2.08}{Editar información geográfica del Becario}} 
+	\end{UCExtenssionPoint}
+	
+	\begin{UCExtenssionPoint}{Registrar información geográfica}{El usuario debe registrar su información geográfica en el sistema.}{Paso 2 de la trayectoria principal}{Paso 2 del caso de uso \cdtRef{CU2.04}{Registrar ubicación del Becario}} 
+	\end{UCExtenssionPoint}

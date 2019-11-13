@@ -1,0 +1,56 @@
+
+\begin{UseCase}{CU2.03}{Visualizar información del Becario}{
+    Permite al usuario \cdtRef{Actor: Becario}{Becario} visualizar su información registrada en el sistema, el usuario presiona el botón \IUbutton{Revisar} ubicado en la sección Información de la pantalla \IUref{IU2.00}{Inicio de Becarios}, el sistema obtiene la información del usuario y la muestra en la pantalla \IUref{IU2.04}{Visualización de Información de Becario}.
+       
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Becario}{Becario}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Becario}{Becario} podrá visualizar su información registrada en el sistema.}
+		
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			\item Pantalla \IUref{IU2.04}{Visualización de Información de Becario}.
+    			
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario \cdtRef{Actor: Becario}{Becario} registrado en el sistema}
+		\UCitem{Postcondiciones}{
+		   N/A}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Visualizar información }
+	
+		% \UCpaso[\UCactor] Ingresa al sistema con sus credenciales.
+	    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.00}{Inicio de Becarios}.
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Revisar} ubicado en la sección Información de la pantalla \IUref{IU2.00}{Inicio de Becarios}.\Trayref{B-CU2.03}
+		\UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.04}{Visualización de Información de Becario} con la información obtenida. 
+        \UCpaso[\UCactor]Presiona el botón \IUbutton{Cerrar} de la pantalla \IUref{IU2.04}{Visualización de Información de Becario}.\Trayref{A-CU2.03}
+		
+	\end{UCtrayectoria}
+	
+
+	%---- A Error en el sistema
+
+	
+	%---------------------------------------Trayectoria Alternativa A --> Editar
+	\begin{UCtrayectoriaA}{A-CU2.03}{Editar información}{A}
+	    \UCpaso[\UCactor]Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU2.04}{Visualización de Información de Becario}.
+	    \item[- -] - - {\em Extiende al caso de uso \cdtRef{CU2.07}{Editar información del Becario}} 
+	\end{UCtrayectoriaA}
+	
+		%-------------------------------------Trayectorias alternativas
+	\begin{UCtrayectoriaA}{B-CU2.03}{Ingreso por menú superior.}{B}
+	    \UCpaso[\UCactor]Presiona la opción Ver mi información en el menú superior de cualquier pantalla en el sistema. %\IUref{IU2.01}{Registro de Informaci\'on de Becarios}.
+	    \item[- -] - - {\em Regresa al punto número 2 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	\subsection{Puntos de Extensión del Caso de Uso}
+	
+	\begin{UCExtenssionPoint}{Editar información}{El usuario desea editar su información registrada en el sistema.}{Paso 4 de la trayectoria principal}{Caso de uso \cdtRef{CU2.07}{Editar información del Becario}} 
+	\end{UCExtenssionPoint}
+	
+%	\begin{UCExtenssionPoint}{Revisar documentos}{El usuario desea visualizar sus documentos registrados en el sistema.}{Paso 3 de la trayectoria principal}{\cdtRef{CU2.06}{Visualizar documentación del Becario}} 
+%	\end{UCExtenssionPoint}

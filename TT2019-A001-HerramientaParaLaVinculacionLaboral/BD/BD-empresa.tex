@@ -1,0 +1,37 @@
+\newpage
+\begin{BD}{Tabla}{Empresa}{
+	%%Descripcion
+	En esta tabla de encuentra registro de los actores \cdtRef{Actor: Empresa}{Empresa} los cuales pueden identificarse e iniciar sesión para utilizar el sistema.
+\bigskip
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{rfc}{Identificador único para el registro del actor, RFC asignado por el SAT Carácter(char) de longitud 13.}{Si}{No}{Si}{Cadena de 13 dígitos con base en la \hyperlink{RN8}{RN8-Formato de Registro Federal de Contribuyentes } .}
+		
+		\BDitem{No}{nombreEmpresa}{Nombre de la Empresa con el cual está registrada en el SAT Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+		
+		\BDitem{No}{telefono}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{RN10-Número telefónico (fijo o celular)}.}
+		
+		\BDitem{No}{telefono}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{RN10-Número telefónico (fijo o celular)}.}
+
+	%	\BDitem{No}{celular}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{Número telefónico (fijo o celular)}.}
+		
+		\BDitem{No}{numeroEmplea dos}{Número de empleados con los que cuenta la empresa. Entero de longitud 11.}{Si}{No}{Si}{Números enteros.}
+
+		\BDitem{No}{numeroBecarios ACapacitar}{Cantidad de becarios puede capacitar en la empresa. Entero de longitud 11.}{No}{No}{Si}{Números enteros.}
+
+		\BDitem{No}{numeroBecarios Capacitando}{Cantidad de becarios que se encuentran capacitandose en la empresa. Entero de longitud 11.}{No}{Si}{No}{Números enteros.}
+
+		\BDitem{No}{numeroBecarios Capacitados}{Cantidad de becarios que concluyeron su capacitación dentro de la empresa. Entero de longitud 11.}{No}{Si}{No}{Números enteros.}
+		
+		\BDitem{No}{correo}{Correo electrónico con el que el usuario se identificará en el sistema. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase \hyperlink{RN13}{RN13-Correo electrónico}.}
+		
+		\BDitem{No}{tipoEmpresa}{Regímen fiscal al que pertenece la empresa. Entero de longitud 11.}{Si}{No}{Si}{Números enterosque se encuentren en alguno de los registros de la tabla tipoempresa.}
+		                   
+		\BDitem{No}{giroEmpresa}{Actividad o negocio que desarrolla la empresa. Entero de longitud 11.}{Si}{No}{Si}{Números enteros que se encuentren en alguno de los registros de la tabla giroempresarial.}
+		                   
+		%\BDitem{No}{idepartamento}{Identificador del departamento en el que labora el actor del sistema. Llave foránea de la tabla departamento.}{Si}{No}{Si}{Números enteros que se encuentren en alguno de los registros de la tabla deparatamento.}
+		
+		\BDitem{No}{idDirección}{Identificador de la dirección del usuario. Entero de longitud 11.}{No}{Si}{No}{Números enteros que se encuentren en alguno de los registros de la tabla dirección.}
+		
+        \BDitem{No}{idResponsable}{Identificador del responsable de la empresa o de la persona fpisica registrada como usuario empresa. Entero de longitud 11.}{Si}{Si}{No}{Números enteros que se encuentren en alguno de los registros de la tabla responsableempresa.}
+		
+\end{BD}

@@ -1,0 +1,130 @@
+\begin{UseCase}{CU1.08}{Editar información del Becario - Administrador}{
+    Permite al usuario \cdtRef{Actor: Administrador}{Administrador} editar la información de un becario en el sistema, el usuario presiona el icono \faEdit correspondiente a la fila del becario que desea editar,
+    el sistema obtiene la información del becario y la muestra en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}, en la cual el usuario \cdtRef{Actor: Administrador}{Administrador} podrá editar la información del becario, finalmente presiona el botón \IUbutton{Cancelar} para cancelar la edición de la información o el botón \IUbutton{Guardar} para almacenar los cambios en el sistema. 
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Administrador}{Administrador}}
+		\UCitem{Propósito}{El \cdtRef{Actor: Administrador}{Administrador} podrá editar los datos de un becario registrado en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+			\begin{itemize}	
+  		        \item Campo o campos que desea editar.
+			\end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG2.02}{Formato de CURP erróneo.}
+    			\item \MSGref{MSG2.03}{Formato de Núm. de seguro social erróneo.}
+    			\item \MSGref{MSG2.07}{Formato de Código Postal erróneo.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.09}{Formato de Número oficial erróneo}
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se generan cambios en el registro del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Editar información }
+
+	     \UCpaso[\UCactor] Presiona el icono \faEdit correspondiente a la fila del becario que desea editar en la pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.\Trayref{A-CU1.08}\Trayref{F-CU1.08}
+		\UCpaso[\UCsist] Obtiene la información del becario seleccionado.
+		\UCpaso[\UCsist] Muestra la información obtenida en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}. 
+
+		\UCpaso[\UCactor] Ingresa los datos que desee editar de la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{E-CU1.08}
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{B-CU1.08}
+		\UCpaso[\UCsist] Verifica que los CURP ingresados por el usuario cumplan con la \hyperlink{RN3}{RN-3. Formato de CURP} . \Trayref{C-CU1.08}
+		\UCpaso[\UCsist] Verifica que los números de seguro social ingresados por el usuario cumplan con la \hyperlink{RN4}{RN-4. Formato de Número de Seguro Social} . \Trayref{D-CU1.08}
+		\UCpaso[\UCsist] Verifica que el Código Postal esté con base en la regla de negocio \hyperlink{RN7}{RN-7 C\'odigo Postal}. \Trayref{G-CU1.08}
+		\UCpaso[\UCsist] Verifica que el Número oficial (No. exterior)esté con base en la regla de negocio \hyperlink{RN12}{Número oficial(exterior)}. \Trayref{H-CU1.08}
+		\UCpaso[\UCsist] Verifica que los telefonos esten con base en la regla de negocio \hyperlink{RN10}{Número telefónico (fijo o celular)}. \Trayref{I-CU1.08}
+		\UCpaso[\UCsist] Verifica que el correo electrónico ingresado esté con base en la regla de negocio \hyperlink{RN13}{Correo electrónico}. \Trayref{J-CU1.08}
+		
+        \UCpaso[\UCsist] Actualiza la información del becario en el sistema.
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.
+	
+	\end{UCtrayectoria}
+	
+
+	%---- A Cerrar
+	%---- B Campos vacíos
+	%---- C CURP invalido
+	%---- D No. de seguro social invalido
+	%---- E Cancelar
+	
+
+	
+	
+
+	%-------------------------------------Trayectorias alternativas A --> Cancelar
+\begin{UCtrayectoriaA}{A-CU1.08}{Eliminar becario.}{A}
+	     \UCpaso[\UCactor]Presiona el icono \faTrashO  correspondiente a la fila del becario que desea eliminar.
+	    % \UCpaso[\UCsist] Muestra una ventana para confirmación con el mensaje %\MSGref{MSG1.04}{Eliminar becario.}
+	     
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.04}{Eliminar Becario - Administrador }.}
+	\end{UCtrayectoriaA}
+
+	%-------------------------------------Trayectorias alternativas C --> Campos vacíos
+	\begin{UCtrayectoriaA}{B-CU1.08}{Campos vacíos.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+	    \item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+
+    
+	%-------------------------------------Trayectorias alternativas D --> CURP erróneo 
+	\begin{UCtrayectoriaA}{C-CU1.08}{El CURP no tiene el formato correcto.}{C}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.02}{Formato de CURP erróneo} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+
+    %-------------------------------------Trayectorias alternativas E --> Número de seguro social erróneo 
+	\begin{UCtrayectoriaA}{D-CU1.08}{El número de seguro social no tiene el formato correcto.}{D}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.03}{Formato de Núm. de seguro social erróneo} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+	 %-------------------------------------Trayectorias alternativas E--> Cancelar
+	\begin{UCtrayectoriaA}{E-CU1.08}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}}{E}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU1.03}{Ver Becarios - Administrador}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+    
+  \begin{UCtrayectoriaA}{F-CU1.08}{Ver información de becario -Administrador.}{F}
+	     \UCpaso[\UCactor]Presiona el icono \textcircled{i} correspondiente a la fila del becario que desea observar.
+	    \item[- -] - - {\em Caso de uso \cdtRef{CU1.03}{Ver Información de Becarios - Administrador }.}
+	\end{UCtrayectoriaA}
+	
+	\begin{UCtrayectoriaA}{G-CU1.08}{El Código postal no tiene el formato correcto.}{G}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.07}{Formato de Código Postal erróneo} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+    	\begin{UCtrayectoriaA}{H-CU1.08}{El No. exterior no tiene el formato correcto.}{H}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.09}{Formato de Número oficial erróneo} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{I-CU1.08}{El teléfono ingresado no tiene el formato correcto.}{I}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.10}{Formato de número telefónico incorrecto} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+    
+    \begin{UCtrayectoriaA}{J-CU1.08}{El correo electrónico ingresado no tiene el formato correcto.}{J}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.11}{Correo electrónico invalido} en la pantalla \IUref{IU1.09}{Editar Información de Becarios - Administrador}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}

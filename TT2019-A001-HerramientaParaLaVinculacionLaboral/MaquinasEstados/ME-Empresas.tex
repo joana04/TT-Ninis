@@ -1,0 +1,47 @@
+\newpage
+
+\section{SM2 Empresas}
+\hypertarget{SM2 Empresas}{SM2 Empresas}
+
+\subsection{Descripción}
+    Una Empresa registrada en la plataforma puede atravesar por diferentes estados,
+    iniciando con el registro inicial. Para poder cambiar de un estado a otro se debe realizar una transición que se da cuando se cumple una condición dentro de la misma máquina de estados.
+
+   Dependiendo del estado en que se encuentre la empresa se le asignará un ícono (ubicado a un costado de su nombre en la pantalla \IUref{IU3.00}{Inicio de Empresas})que le permitirá al usuario saber dicho estado (solamente estado de registrado, aceptado y rechazado). 
+   
+\IUfig[.7]{./MaquinasEstados/images/MEEmpresas.png}{SM2}{Empresas}
+\subsection{Estados}
+	\begin{itemize} 
+        %%%%% Maquina de Estados ver Justificante
+        \item \textbf{Estado 0: Registro inicial}
+        Es el primer estado de la empresa, cuando se registra en el sistema, lo hace de forma parcial, debido a que puede faltar el registro de su ubicación y/o su documentación.\\
+        
+        Una vez que se encuentre en este estado, aparecerá el icono \faExclamationCircle en la pantalla \IUref{IU3.00}{Inicio de Empresas}.\\
+         Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado registre toda su información (ubicación y documentos) en el sistema.
+         
+        \item \textbf{Estado 1: Registro Completo} 
+         Es el segundo estado del usuario, en este punto la empresa ya registro todos sus datos, su información personal, su ubicación y sus documentos solicitados. \\
+          Una vez que se encuentre en este estado, continuara el icono \faExclamationCircle en la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+           Podrá cambiar a los siguientes estados:\\
+        Estado 2: Cambiará a este estado cuando las validaciones con los servicios web den la respuesta esperada por el sistema.\\
+        Estado 3: Cambiará a este estado cuando las validaciones con los servicios web den una respuesta diferente a la esperada por el sistema.
+        %\faTimesCircle
+        
+        \item \textbf{Estado 2: Aceptado} 
+        Es el estado que confirma la aceptación de la empresa al programa, esto quiere decir que el usuario ya será considerado para la vinculación laboral.\\
+        Una vez que se encuentre en este estado, aparecerá el icono \faCheckCircle en la pantalla \IUref{IU3.00}{Inicio de Empresas}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado cuando edite su información en el sistema.
+       
+        
+        \item \textbf{Estado 3:Rechazado}
+         Es el estado que confirma el rechazo de la empresa al programa, esto quiere decir que el usuario no será considerado para la vinculación laboral por incumplir con alguno de los lineamientos del programa o por un veredicto diferente al esperado por alguno de los servicios web.\\
+        Una vez que se encuentre en este estado, aparecerá el icono \faTimesCircle en la pantalla \IUref{IU3.00}{Inicio de Empresas}.\\
+        Podrá cambiar a los siguientes estados:\\
+        Estado 1: Cambiará a este estado cuando edite su información en el sistema.
+        
+
+         
+    \end{itemize} 
+	

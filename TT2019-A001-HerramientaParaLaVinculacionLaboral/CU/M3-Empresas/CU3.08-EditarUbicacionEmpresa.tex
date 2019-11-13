@@ -1,0 +1,93 @@
+\begin{UseCase}{CU3.08}{Editar información geográfica de la Empresa}{
+    Permite al usuario \cdtRef{Actor: Empresa}{Empresa} editar su información geográfica en el sistema, el usuario presiona el botón 
+    \IUbutton{Editar} en la pantalla \IUref{IU3.05}{Visualización de Dirección de empresa}, el sistema recupera la información del usuario y la muestra en la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa},  esta pantalla le permite al usuario editar sus datos en el sistema, una vez que ingreso los datos que desea cambiar puede presionar el botón \IUbutton{Cancelar} para cancelar la edición de su información o el botón \IUbutton{Guardar} para almacenar los cambios en el sistema. 
+    
+    
+    \bigskip
+}
+		\UCitem{Versión}{1.0}
+		\UCitem {Actor}{\cdtRef{Actor: Empresa}{Empresa} }
+		\UCitem{Propósito}{El representante de la \cdtRef{Actor: Empresa}{Empresa}  podrá editar sus datos geográficos en el sistema.}
+		\UCitem{Entradas}{Información ingresada por el usuario:
+			\begin{itemize}	
+  		        \item Campo o campos que desea editar.
+			\end{itemize}
+	     }
+		\UCitem{Salidas}{
+			\begin{itemize}
+    			
+    			\item \MSGref{MSG1.01}{Registro exitoso.}
+    			\item \MSGref{MSG2.07}{Formato de Código Postal erróneo.}
+    			\item \MSGref{MSG1.03}{Operación cancelada.}
+    			\item \MSGref{MSG2.04}{Campos obligatorios vacíos.}
+    			\item \MSGref{MSG2.09}{Formato de Número oficial  erróneo.}
+    		\end{itemize}}
+		\UCitem{Precondiciones}{
+    		Usuario registrado en el sistema.}
+		\UCitem{Postcondiciones}{
+		    \begin{itemize}
+    		    \item Se generan cambios en el registro del usuario en el sistema.
+    		 \end{itemize}}
+\end{UseCase}
+	
+	%-------------------------------------- COMIENZA descripción Trayectoria Principal
+	\begin{UCtrayectoria}{Editar información }
+
+        \UCpaso[\UCactor]Presiona el botón \IUbutton{Editar} de la pantalla \IUref{IU3.05}{Visualización de Dirección de empresa}.\Trayref{A-CU3.08}
+        \UCpaso[\UCsist] Obtiene la información del usuario.
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.08}{Edición de Información geográfica de Becario}. 
+		\UCpaso[\UCactor] Ingresa los datos que desee editar de la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa}.
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Guardar}. \Trayref{D-CU3.08}%antes e
+		\UCpaso[\UCsist] Verifica que los campos estén con base en la regla de negocio \hyperlink{RN2}{RN-2 Campo Obligatorio}. \Trayref{B-CU3.08}
+		\UCpaso[\UCsist] Verifica que el Código Postal esté con base en la regla de negocio \hyperlink{RN7}{RN-7 C\'odigo Postal}. \Trayref{C-CU3.08}
+		\UCpaso[\UCsist] Verifica que el Número oficial (No. exterior)esté con base en la regla de negocio \hyperlink{RN12}{Número oficial(exterior)}. \Trayref{E-CU3.08}
+        \UCpaso[\UCsist] Actualiza la información del solicitante en el sistema.
+	    \UCpaso[\UCsist] Muestra la pantalla \IUref{IU3.00}{Inicio de Empresa}.
+	
+	\end{UCtrayectoria}
+	
+
+	%---- A Cerrar
+	%---- B Campos vacíos
+	%---- C CP invalido
+
+	%---- D-E Cancelar
+	
+
+	
+	
+
+	%-------------------------------------Trayectorias alternativas A --> Cerrar
+	\begin{UCtrayectoriaA}{A-CU3.08}{Presiona el botón \IUbutton{Cerrar} de la pantalla \IUref{IU3.05}{Visualización de Dirección de empresa}}{A}
+		\UCpaso[\UCsist] Muestra la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+
+	%-------------------------------------Trayectorias alternativas b --> Campos vacíos
+	\begin{UCtrayectoriaA}{B-CU3.08}{Campos vacíos.}{B}
+	    \UCpaso[\UCsist]Muestra el mensaje \MSGref{MSG2.04}{Campos obligatorios vacíos}en la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa}.
+	    \item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.}
+	\end{UCtrayectoriaA}
+	
+	%----------------------------------------D CP invalido
+		\begin{UCtrayectoriaA}{C-CU2.08}{El Código postal no tiene el formato correcto.}{C}
+
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.07}{Formato de Código Postal erróneo.} en la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+
+    
+	 %-------------------------------------Trayectorias alternativas E--> Cancelar
+	\begin{UCtrayectoriaA}{D-CU4.08}{Presiona el botón \IUbutton{Cancelar} de la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa}}{D}
+		\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG0.03}{Operación cancelada} en la pantalla \IUref{IU3.00}{Inicio de Empresas}.
+		\item[- -] - - {\em Fin del caso de uso.} 
+	\end{UCtrayectoriaA}
+    
+    
+    \begin{UCtrayectoriaA}{E-CU3.08}{El No. exterior no tiene el formato correcto.}{E}
+		    %\UCpaso[\UCsist] Muestra la pantalla \IUref{IU2.2}{Ver incidencias}.
+			\UCpaso[\UCsist] Muestra el mensaje \MSGref{MSG2.09}{Formato de Número oficial  erróneo} en la pantalla \IUref{IU3.08}{Edición de Información geográfica de la Empresa}.
+			\item[- -] - - {\em Regresa al punto número 4 de la trayectoria principal.} 
+    \end{UCtrayectoriaA}
+  %-------------------PUNTOS DE EXTENSION----------------  
+

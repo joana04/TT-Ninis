@@ -1,0 +1,38 @@
+
+\begin{BD}{Tabla}{Becario}{
+	%%Descripcion
+	En esta tabla de encuentra registro de los actores \cdtRef{Actor: Becario}{Becario} los cuales pueden identificarse e iniciar sesión para utilizar el sistema.
+	\bigskip
+
+} %llave primaria ||columna || descripcion||obligatorio||generado por el sistema|| ingresado por el usuario ||| valores validos 
+		\BDitem{Si}{curp}{Identificador único para el registro del actor, CURP Clave Única de Registro de Población. Carácter(char) de longitud 18.}{Si}{No}{Si}{Cadena de 18 dígitos con base en la \hyperlink{RN3}{RN3-Formato de CURPs } .}
+		
+		\BDitem{No}{nombreBecario}{Nombre del Becario con el cual está registrado Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+		
+		\BDitem{No}{paternoBecario}{Apellido paterno del Becario con el cual está registrado Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+		
+		\BDitem{No}{maternoBecario}{Apellido materno del Becario con el cual está registrado Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 60 dígitos.}
+		
+		\BDitem{No}{edad}{Edad del becario. Entero de longitud 11.}{Si}{No}{Si}{Números enteros.}
+		
+		\BDitem{No}{numeroSeguri- dadSocial}{Numero de identificación con el que esta registrado en el IMSS. Carácter(char) de longitud 11.}{Si}{No}{Si}{Cadena de 11 dígitos con base en la \hyperlink{RN4}{RN4-Formato de Numero de Seguro Social} .}
+		
+		\BDitem{No}{telefono}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{RN10-Número telefónico (fijo o celular)}.}
+		
+		\BDitem{No}{telefono}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{RN10-Número telefónico (fijo o celular)}.}
+
+	%	\BDitem{No}{celular}{Teléfono (fijo o celular) de contacto. Carácter (varchar) de longitud 10.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN10}{Número telefónico (fijo o celular)}.}
+		
+
+		\BDitem{No}{idGradoEstu- dios}{Identificador de grados de estudios del becario. Entero de longitud 11.}{No}{No}{Si}{Números enteros que se encuentren en alguno de los registros de la tabla gradoEstudios.}
+
+		\BDitem{No}{certificado}{Entero con valor 1 o 0 que indica si se cuenta o no con un certificado de grado de estudios. Tinyint.}{Si}{Si}{No}{Números enteros.}
+
+		\BDitem{No}{correo}{Correo electrónico con el que el usuario se identificará en el sistema. Carácter (varchar) de longitud 60.}{Si}{No}{Si}{Cadena de 10 dígitos. Véase  \hyperlink{RN13}{RN13-Correo electrónico}.}
+        
+        \BDitem{No}{idDiscapacidad}{Identificador del tipo de discapacidad que padece el becario. Entero de longitud 11.}{Si}{Si}{No}{Números enteros que se ecneuntren en alguno de los registrps de la tabla discapacidades.}
+
+		\BDitem{No}{idDirección}{Identificador de la dirección del usuario. Entero de longitud 11.}{No}{Si}{No}{Números enteros que se encuentren en alguno de los registros de la tabla dirección.}
+
+		
+\end{BD}
