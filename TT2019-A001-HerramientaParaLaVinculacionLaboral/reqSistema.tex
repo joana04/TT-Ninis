@@ -1,0 +1,109 @@
+\chapter{Requerimientos del sistema}
+\label{cap:reqSist}
+
+\section{Notación, símbolos y convenciones utilizadas}
+
+	Los requerimientos funcionales utilizan una clave RFX, donde:
+	
+\begin{description}
+	\item[RFS] Es la clave para todos los {\bf R}equerimientos {\bf F}uncionales del {\bf S}istema.
+	\item[RFU] Es la clave para todos los {\bf R}equerimientos {\bf F}uncionales del {\bf U}suario.
+	\item[RFA] Es la clave para todos los {\bf R}equerimientos {\bf F}uncionales del {\bf A}dministrador.
+	\item[X] Es un número consecutivo: 1, 2, 3, ...
+\end{description}
+
+	Además, para los requerimientos funcionales se usan las abreviaciones que se muestran en la tabla~\ref{tbl:leyendaRF}.
+\begin{table}[hbtp!]
+	\begin{center}
+    \begin{tabular}{|r l|}
+	    \hline
+    	{\footnotesize Id} & {\footnotesize\em Identificador del requerimiento.}\\
+    	{\footnotesize Pri.} & {\footnotesize\em Prioridad}\\
+    	{\footnotesize Ref.} & {\footnotesize\em Referencia a los Requerimientos de usuario.}\\
+    	{\footnotesize MA} & {\footnotesize\em Prioridad Muy Alta.}\\
+    	{\footnotesize A} & {\footnotesize\em Prioridad Alta.}\\
+    	{\footnotesize M} & {\footnotesize\em Prioridad Media.}\\
+    	{\footnotesize B} & {\footnotesize\em Prioridad Baja.}\\
+    	{\footnotesize MB} & {\footnotesize\em Prioridad Muy Baja.}\\
+		\hline
+    \end{tabular} 
+    \caption{Leyenda para los requerimientos funcionales.}
+    \label{tbl:leyendaRF}
+	\end{center}
+\end{table}
+
+\newpage
+
+\section{Requerimientos funcionales}
+Los requerimiento funcionales describen lo que el sistema debe hacer.\\
+
+Son declaraciones de los servicios que debe proporcionar el sistema, de la manera en que éste debe reaccionar con determinadas entradas y situaciones, también pueden declarar lo que el sistema no debe hacer \cite{Req}
+
+\begin{table}[htbp!]
+	\begin{requerimientos}
+	    \FRitem{RFS1}{Inicio de sesión}{El sistema permitirá el manejo de distintos tipos de sesiones de acuerdo al tipo de usuario.}{A}{RU}
+	    \FRitem{RFS2}{Registro de becarios}{El sistema permitirá el registro, consulta, actualización y eliminación de los usuarios \cdtRef{Actor: Becario}{Becario} con el fin de tener registro de los solicitantes.}{A}{RU}
+	   	\FRitem{RFS3}{Registro de empresas}{El sistema permitirá el registro, consulta, actualización y eliminación las \cdtRef{Actor: Empresa}{Empresa} que se encuentren ofertando vacantes.}{A}{RU}
+		\FRitem{RFU1}{Registro de vacantes}{El usuario desea registrar, consultar, actualizar y eliminar vacantes ofertadas.}{A}{RU}
+
+		\FRitem{RFA1}{Gestionar usuarios}{El administrador desea gestionar y visualizar la informacion de los usuario registrados en el sistema.}{A}{RU}
+		\FRitem{RFA2}{Gestionar archivos}{El administrador desea gestionar los archivos registrados en el sistema.}{A}{RU}
+	\end{requerimientos}
+    \caption{Requerimientos funcionales.}
+    \label{tb1:reqFunc}
+\end{table}
+
+
+\newpage
+
+\section{Requerimientos no funcionales} 
+
+Son restricciones de los servicios o funciones ofrecidos por el sistema. Incluyen restricciones de tiempo, proceso de desarrolloo y estándares\cite{Req}.
+
+\begin{table}[htbp!]
+	\begin{requerimientosnf}
+	    %% -Requerimientos funcionales de sistema
+	    \FRitem{RNF1}{Portabilidad}{El sistema estará disponible mediante una aplicacion web. Estará soportada con el siguiente navegador web:
+	            \begin{itemize}
+	                \item Google Chrome.
+	            \end{itemize}
+	            Según las estadisticas de \cite{statcounter} el 63.72 \% de los usuarios utilizan Chrome para navegar, a demás que es soportado por Linux, Windows, etc.
+	            \newline
+	            Como versión utilizaremos la mas reciente a la que estamos realizando el TT (Versión 77.0.3865.90).
+	        }{A}{RU}
+	    %ado hasta por 400 usuario, (se comprobará a través de pruebas de estrés) siempre y cuando se tenga una conexion estable a Internet.}{A}{RU}
+	    \FRitem{RNF2}{Fiabilidad}{
+	        \begin{itemize}
+	            \item El sistema deberá trabajar de manera correcta bajo condiciones de uso especificadas en los Caosos de Uso.
+	            \item El sistema trabajará correctamente con una conexión estable a internet.
+	            \item No debe haber perdida de información cuando se realiza una transacción y haya una falla en el servidor.
+	        \end{itemize}
+	        %aqui estaba lo de no exigir de más al sistema
+	       
+	        Nota: Se refiere condición estable cuando tenemos conexión a internet con un ancho de banda mayor a 1000 kb/s por medio de cable Ethernet, sin ningun tipo de fallo de hardware.}{A}{RU}
+		\FRitem{RNF3}{Mantenibilidad}{Todo el sistema estará documentado y estructurado.
+		\newline
+		Procesos, cosos de uso y código estructurados de una manera consistente e integral (con la documentación correspondiente) previendo la facilidad del mantenimiento a futuro.}{A}{RU}
+		
+	\end{requerimientosnf}
+    \caption{Requerimientos no funcionales del sistema.}
+    \label{tb2:reqNoFunc}
+\end{table}
+ %Nota: Se considera condición normal las consultas o las transacciones que pueda realizar.
+%	        \newline
+\newpage
+%%--------------
+\subsection{Restricciones de construcción}
+\begin{table}[htbp!]
+	\begin{restcon}
+	    %% -Requerimientos funcionales de sistema
+	    \RCitem{RC1}{Manejador de Base de Datos}{El sistema usa el  manejado de base de datos MySQL.}
+	    \RCitem{RC2}{Sistema Operativo del servidor}{El servidor esta montado en Google Cloud con un SO Windows Server 2012.}
+	    \RCitem{RC3}{Memoria RAM del servidor}{El servidor tiene una memoria RAM de 16384 MB.}
+	    \RCitem{RC4}{CPU del servidor}{El servidor tiene un CPU Dual 2.8 GHz Intel Xenon(R) (Hyper-Threaded).}
+		\RCitem{RC5}{Sistema Operativo en el sistema}{Al utilizar Google Chrome podemos asegurar que podra utilizar el sistema en cuelaquier Sistema Operativo. }
+		
+\end{restcon}
+    \caption{Restricciones de construcción del sistema.}
+    \label{tb3:RestriccionesDeConstruccion}
+\end{table}
