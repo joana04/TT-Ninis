@@ -1,0 +1,36 @@
+%========================================================
+%========================================================
+% Regla del Negocio #11 - Datos que se pueden editar
+%-----------------------------------------------
+\section{Regla de Negocio 11.- Datos que se pueden editar}
+
+\begin{BussinesRule}{RN11}{Datos que se pueden editar}
+	\BRitem[Tipo:] Regla de restricción (Validación).
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:] El usuario puede editar solamente ciertos datos. En caso de que quiera editar algun dato que no se encuentre en la lista siguiente, debera acudir con el administrador del sistema.\\
+	Datos que se pueden editar:
+	\begin{itemize}
+	    \item Becario:
+	        \begin{itemize}
+	            \item Télefono fijo.
+	            \item Télefono celular.
+	            \item Discapacidad.
+	            \item Grado de estudios.
+	            \item Dirección.
+	            \item Documentos.
+	        \end{itemize}
+	   \item Empresa:
+	        \begin{itemize}
+	            \item Giro empresarial.
+	            \item Información personal o del representante de la empresa.
+	        \end{itemize}
+	\end{itemize}
+	\BRitem[Motivación:] Que el usuario pueda editar inormación que no pueda tener un impacto en el sistema. 
+
+\end{BussinesRule}

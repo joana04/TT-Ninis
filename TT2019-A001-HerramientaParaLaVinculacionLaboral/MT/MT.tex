@@ -1,0 +1,94 @@
+%=========================================================
+%Manual técnico
+
+
+\section{Principales tecnologías utilizadas}
+
+El manual técnico tiene como objetivo proporcionar y documentar la lógica con las que se ha desarrollado el sistema de Control de Incidencias.
+
+El sistema de desarrolló con las siguientes herramientas:
+\begin{itemize}
+    %Java
+    \item \textbf{Java:} lenguaje de programación de propósito general presentado por Sun Microsystems en 1995 cuyo actual propietario es Oracle. Una de sus carácteristicas es que esta diseñado para tener pocas dependencias de implementación. Los principales aspectos de Java son:
+        \begin{itemize}
+            \item Paradigma de programación orientado a objetos.
+            \item Permite la ejecución de un mismo programa en múltiples sistemas operativos.
+            \item Incluye por defecto el soporte para trabajo en red.
+            \item Diseñado para ejecutar código en sistemas remotos de forma segura.
+            \item Fácil de usar y tomar caracteristicas positivas de otros lenguajes de programación como C.
+        \end{itemize}
+        
+        
+    %JavaScript
+    \item \textbf{JavaScript:} lenguaje de programación mutiparadigma al soportar programación orientada a objetos, funcional e imperativa, además de ser dinámico e interpretado considerado por el lenguaje de \textit{script} para páginas web, aunque también es usado en entornos sin navegador como node.js. La mayoría de sitios web actuales utiliza JavaScript, de la misma manera que los navegadores web modernos (desde 2012) de computadoras de escritorio, tabletas electrónicas y teléfonos inteligentes incluyen intérpretes de JavaScript. Se encuentra estandarizado por la asociación europea para la creación de estándares para la comunicación y la información (ECMA: European Computer Manufacturers Association). Un aspecto clave de JavaScript es la relacion que establece entre Objetos, Funciones y Clausuras para sus programas. En general, JavaScript se emplea en el desarrollo de páginas para especificar el comportamiento de éstas integrando:
+        \begin{itemize}
+            \item Respuesta de la pagina web a través de la interaccion del usuario con elementos como botones, listas de selección, vínculos y áreas de texto.
+            \item Controlar nevagación multi \textit{frame} o marcos y con \textit{plugins} basado en selecciones del usuario sobre el documento HTML a través de DOM (Modelo Objeto Documento).
+            \item Preprocesamiento de datos de lado del cliente antes de enviarlos al servidor, reduciendo el tráfico y carga de procesamiento en éste.
+            \item Cambiar el contenido y estilos dinámica e instantaneamente como respuesta a interacciones con el usuario.
+        \end{itemize}
+        
+     %Ajax
+    \item \textbf{Ajax:} acrónimo de JavaScript Asícrono y XML
+        \begin{itemize}
+            \item Respuesta de la pagina web a través de la interaccion del usuario con elementos como botones, listas de selección, vínculos y áreas de texto.
+            \item Controlar nevagación multi \textit{frame} o marcos y con \textit{plugins} basado en selecciones del usuario sobre el documento HTML a trvés de de DOM (Modelo Objeto Documento).
+            \item Preprocesamiento de datos de lado del cliente antes de enviarlos al servidor, reduciendo el tráfico y carga de procesamiento en éste.
+            \item Cambiar el contenido y estilos dinámica e instantaneamente como respuesta a interacciones con el usuario.
+        \end{itemize}
+        
+        
+    %JQuery
+    \item \textbf{jQuery:} librería de JavaScript o \textit{framework} creada en 2006 que mitiga la incompatibilidad de navegadores al utilizar JavaScript, evitando que en el desarrollo se considere este aspecto. Se caracteriza por ofrecer facilidad a acceder y manipular elementos a través de su contenido, como atributos  HTML y de hojas de estilo como CSS, asi como la definición de manejadores de eventos y realizar animaciones. Además, ofrece utilidades de Ajax para peticiones HTTP dinámicas asi como funciones generales para el uso de objetos y arreglos. jQuery esta basado en \textit{queries} o consultas, comúnmente sobre selectores CSS para identificar un conjunto de elementos del documento y devolver un objeto que los represente. jQuery ofrece las siguientes utilidades orientadas a nivel de desarrollo de aplicaciones:
+        \begin{itemize}
+            \item Sintaxis expresiva (con selectores CSS) para referir a elementos del documento.
+            \item Método de consulta eficiente para encontrar conjuntos de elementos dado un selector CSS.
+            \item Métodos sumamente útiles para manipular los elementos seleccionados.
+            \item Técnicas de programación funcional para operar sobre conjuntos de elementos en vez de uno a uno.
+        \end{itemize}
+        
+     %Bootstrap 
+    \item \textbf{Bootstrap:} \textit{framework} que en conjunto con HTML, JS, CSS se utiliza para el diseño de aplicaciones web a tra´ves de las hojas de estilo en cascada y plantillas. Algunas de sus características son:
+        \begin{itemize}
+            \item Diseño reponsivo, el cual se refiere a que éste se mostrará optimizado segun el tamaño de la pantalla del dispositivo desde el cual se esta accediendo a la aplicación web.
+            \item Los dispositivos móbiles son parte del enfoque de Bootstrap, de forma que el diseño para tales dispositivos puede definirse a partir del diseño para escritorio.
+        \end{itemize}
+        
+        
+        
+    %Spring
+    \item \textbf{Spring:} \textit{framework} para aplicaciones en Java que proporciona la estructura necesaria para el soprote de desarrollo, cuyo uso compun es en aplicaciones web (pero no esta restringuido a estas). Se compone de 20 módulos, entre los que estan JRM, JDBC, Struts, Beans y AOP. Permite una metodología de trabajo ágil, El soporte de Spring ofrece Los siguientes servicios:
+        \begin{itemize}
+            \item Estereotipos configurables.
+            \item Inyección de dependencias: la relacion de los multiples objetos en la aplicación implica la inyección de las instancias en cada uno, lo cual Spring se encarga de la inyeccion de las dependencias, es decir, permite proporcionar a un objeto cliente, acceso a un objeto servidor que da el servicio requerido.
+        \end{itemize}
+        
+        
+    %Hibernate
+    \item \textbf{Hibernate:} \textit{framework} para aplicaciones en lenguaje Java de ORM (\textit{Object/Relational Mapping}) que permite mapear estrcuturas de los objetos de clases de Java a la estrcutura relacional de la base datos, facilitando la tarea de almacenar instancias de objeto en memoria a datos persistentes y cargarlos para obtenerlos en la misma estructura de objetos. De este modo, Hibernate es una implementación de JPA(\textit{Java Persistence API}.)
+    Consiste de los siguientes módulos:
+        \begin{itemize}
+            \item \textit{Entities}: clases que son mapeadas por Hibernate a las tablas de sistemas de bade de datos relacional.
+            \item \textit{Metadatos de objetos relacionales}: información de cómo mapear las entidades al sistema de base de datos relacional a través de anotaciones o con archivos de configuración XML.
+            \item \textit{HQL: Lenguaje de Consulta Hibernate}: usando Hibernate, las consultas a la base de datos no tienen que ser en SQL sino que pueden especificarse en HQL sin tener dependencia del proveedor del sistema gestor de base de datos.
+        \end{itemize}
+
+
+        
+     MySQL
+    \item \textbf{MySQL:} MySQL es un sistema de gestión de bases de datos relacional desarrollado bajo licencia dual: Licencia pública general/Licencia comercial por Oracle Corporation y está considerada como la base de datos de código abierto más popular del mundo, y una de las más populares en general junto a Oracle y Microsoft SQL Server, sobre todo para entornos de desarrollo web, algunas caracteristicas son:
+
+        \begin{itemize}
+            \item Amplio subconjunto del lenguaje SQL.
+            \item Algunas extensiones son incluidas igualmente.
+            \item Disponibilidad en gran cantidad de plataformas y sistemas.
+            \item Posibilidad de selección de mecanismos de almacenamiento que ofrecen diferentes velocidades de operación, soporte físico, capacidad, distribución geográfica, transacciones...
+            \item Transacciones y claves foráneas.
+            \item Conectividad segura.
+            \item Replicación.
+            \item Búsqueda e indexación de campos de texto.
+        \end{itemize}
+        
+    
+\end{itemize}
+

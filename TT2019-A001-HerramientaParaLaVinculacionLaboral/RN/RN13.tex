@@ -1,0 +1,31 @@
+%========================================================
+%========================================================
+% Regla del Negocio #12 - Número oficia-exterior
+%-----------------------------------------------
+\section{Regla de Negocio 13.- Correo electrónico}
+
+\begin{BussinesRule}{RN13}{Correo electrónico}
+	\BRitem[Tipo:] Regla de restricción (Validación).
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:]  Servicio que permite el intercambio de mensajes a través de sistemas de comunicación electrónicos. Longitud máxima 60 caracteres. 
+	\BRitem[Motivación:] Almacenar correos electrónicos validos.
+	
+	\BRitem[Sentencia:] $\forall\ x \in Correo Electr\'onico \Rightarrow     [a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes correos electrónicos:
+        \begin{itemize}
+			\item email.123@dominio.com
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes correos electrónicos.
+		\begin{itemize}
+        	\item 34875116dominio.com
+        	
+    \end{itemize}
+
+
+\end{BussinesRule}

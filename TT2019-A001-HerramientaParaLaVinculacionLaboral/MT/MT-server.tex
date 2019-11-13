@@ -1,0 +1,102 @@
+\section{Configuración de servidor para desplegar aplicación}
+
+\textbf{Google Cloud:} es una plataforma que ha reunido todas las aplicaciones de desarrollo web que Google estaba ofreciendo por separado. Es utilizada para crear ciertos tipos de soluciones a través de la tecnología almacenada en la nube y permite por ejemplo destacar la rapidez y la escalabilidad de su infraestructura en las aplicaciones del buscador.
+
+\IUfig[1.05]{./MT/IMG/MT1.png}{D2}{Plataforma Google Cloud}
+
+\newpage
+
+\textbf{Compute engine:} Esta herramienta permite generar instancias de máquinas virtuales para poder trabajar sobre ellas, cuentan con una gran variedad de opciones tanto de hardware como de software, en este caso se utilizará una instancia de windows server 2012 con experiencia de escritorio disponible.
+
+\IUfig[1.05]{./MT/IMG/MT2.png}{D2}{Configuracion Máquina Virtual}
+
+\newpage
+
+\textbf{Configuracion de red:} Una vez creada la instancia de MV, se tiene la opción de reservar una dirección IP estática para que no se modifique nunca y sea posible acceder a ella fácimente.
+
+\IUfig[1.05]{./MT/IMG/MT3.png}{D2}{Configuración de IP estática}
+
+\newpage
+
+\textbf{Remote Desktop Protocol:} Al haber creado la instancia con disponibilidad de uso con escritorio, se puede acceder al mismo con RDP desde la función de conexión a escritorio de windows, agregando la dirección IP reservada y las credenciales (si se definieron) de windows.
+
+\IUfig[1.05]{./MT/IMG/MT4.png}{D2}{Conexión a escritorio remoto}
+
+\newpage
+
+\textbf{Server Manager:} En windows server se cuenta con la configuración de Server Manager desde la cual se pueden configurar y agregar roles y funciones a la instancia que hemos creado, desde estas configuraciones se agregará IIS.
+
+\IUfig[1.05]{./MT/IMG/MT5.png}{D2}{Server Manager (add roles and features)}
+
+\newpage
+
+\textbf{Interet Information Services:} Internet Information Services o IIS es un servidor web y un conjunto de servicios para el sistema operativo Microsoft Windows. Originalmente era parte del Option Pack para Windows NT. Luego fue integrado en otros sistemas operativos de Microsoft destinados a ofrecer servicios, como Windows 2000 o Windows Server 2003. Windows XP Profesional incluye una versión limitada de IIS. Los servicios que ofrece son: FTP, SMTP, NNTP y HTTP/HTTPS. 
+
+\IUfig[1.05]{./MT/IMG/MT6.png}{D2}{Agregar IIS (web server)}
+
+\newpage
+
+\textbf{Inet Manager:} Una vez agregado IIS Se debe acceder al Inet Managr donde debe poder observar que la conexión con IIS ya se encuentra agregada si el proceso fue hecho de forma exitosa, en esta herramienta el usuario puede configurar IIS y todas sus funcionalidades así como los sitios web que en el residan.
+
+\IUfig[1.05]{./MT/IMG/MT7.png}{D2}{Inet Manager IIS}
+
+\newpage
+
+\textbf{Archivos de configuración:} Una vez condigurado el servidor, se debe comenzar a descargar e instalar los demás elementos que se necesitan para el correcto funcionamiento de la aplicación: Distribución JDK 8 de Java, Apache Tomcat, AJP13 connector, y MySQL server 5.5 
+
+\IUfig[1.05]{./MT/IMG/MT8.png}{D2}{Archivos de configuración}
+
+\newpage
+
+\textbf{Java JDK:} Java Development Kit (JDK) es un software que provee herramientas de desarrollo para la creación de programas en Java. Puede instalarse en una computadora local o en una unidad de red.En este caso se debe hacer la instalación de forma normal.
+
+\IUfig[1.05]{./MT/IMG/MT9.png}{D2}{Instalación JDK 8}
+
+\newpage
+
+\textbf{Java Runtime Enviroment:} Java Runtime Environment o JRE es un conjunto de utilidades que permite la ejecución de programas Java. cuando se muestra una ventana en la que pregunta al usuario si desea modifcar la ubicación del JRE se debe seleccionar la opción de hacerlo para poder utilizarlo más adelante.
+
+\IUfig[1.05]{./MT/IMG/MT10.png}{D2}{Cambio de ubicación de JRE}
+
+\newpage
+
+\textbf{Apache Tomcat:} Apache Tomcat (también llamado Jakarta Tomcat o simplemente Tomcat) funciona como un contenedor de servlets desarrollado bajo el proyecto Jakarta en la Apache Software Foundation. Tomcat implementa las especificaciones de los servlets y de JavaServer Pages (JSP) de Oracle Corporation. Se debe hacer una instalación normal de este software con todos sus componentes.
+
+\IUfig[1.05]{./MT/IMG/MT11.png}{D2}{Instalación de Tomcat}
+
+\newpage
+
+\textbf{Puerto AJP 1.3:} Durante la instalación de Apache Tomcat se mostrará una ventana en la que se deben configurar los puertos que utilizará el mismo, se debe ser cuidadoso en que puerto se deja configurado el AJP1.3 connector ya que es necesario conocerlo más adelante.
+
+\IUfig[1.05]{./MT/IMG/MT12.png}{D2}{Configuración puertos para Tomcat}
+
+\newpage
+
+\textbf{Selección JRE:} continuando con la instalación se debe indicar donde encontrar el JRE que previamente debió ser instalado, por lo cual es de suma importancia conocer la ubicación del mismo.
+
+\IUfig[1.05]{./MT/IMG/MT13.png}{D2}{Selección de JRE}
+
+\newpage
+
+\textbf{AJP 1.3 connector:} Cuando se descarga el conector AJP se obtiene una carpeta con diversos archivos, se debe ejecutar el de nombre: ConnecorSetup y seguir las instrucciones de su instalación.
+
+\IUfig[1.05]{./MT/IMG/MT14.png}{D2}{Instalación de AJP13-connector}
+
+\newpage
+
+\textbf{Configuracion Puerto AJP:} Continuando con la instalación del AJP se mostrará una ventana, en la que se debe configurar sobre que puertos deberá conectarse el AJP, por lo cual es importante que en la instalación de tomcat se haya definido bien ese puerto, por default se configura el 8009.
+
+\IUfig[1.05]{./MT/IMG/MT15.png}{D2}{Configuración puerto AJP}
+
+\newpage
+
+\textbf{IIS-AJP:} Continuando con la instalación del AJP se mostrará una ventana donde se debe configurar si se desea que se aplique la conexion a todos los websites que se encuentren en IIS o solo a los que el usuario decida, en este caso ya que solo se utilizará IIS como un enlace directo a Tomcat se debe dejar en la opción de todos los sitios.
+
+\IUfig[1.05]{./MT/IMG/MT16.png}{D2}{Configuración con IIS AJP}
+
+\newpage
+
+\textbf{MySQL Server:} Instalar de forma normal MySQL server 5.5 para generar bases de datos necesarias para el funcionamiento de la aplicación.
+
+\IUfig[1.05]{./MT/IMG/MT17.png}{D2}{Instalación MySAQL Server 5.5}
+

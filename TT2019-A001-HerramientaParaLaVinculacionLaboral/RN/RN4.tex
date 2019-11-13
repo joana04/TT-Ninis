@@ -1,0 +1,39 @@
+%========================================================
+% Regla del Negocio #4 - Formato de NSS
+%-----------------------------------------------
+\section{Regla de Negocio 3.- Formato de Número de Seguro Social }
+
+\begin{BussinesRule}{RN3}{Formato de Número de Seguro Social (NSS)}
+	\BRitem[Tipo:] Regla estructural. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:]El Número de Seguro Social (NSS) es un número compuesto de once (11) dígitos con el cual los trabajadores que cotizan en el IMSS son identificados por dicha institución desde el mismo momento de su afiliación. Es de carácter personal, permanente y único \cite{NSS}. Su secuencia de números se compone de los siguientes elementos:
+	        \begin{itemize}
+	            \item Los dos primeros dígitos Refiere a la subdelegación en el que fue afiliado
+	            \item Tercer y cuarto digito corresponden al año de afiliación
+	            \item Quinto y sexto digito se refieren a la fecha de nacimiento del afiliado.
+	            \item Los siguientes cuatro dígitos son los que el IMSS le asignado al trabajador.
+	            \item El último digito es el número de verificación del trabajador ante el IMSS.
+	           
+	        \end{itemize}
+	        
+	
+	\BRitem[Motivación:] Registrar en el sistema NSSs con estructuras correctas.
+	\BRitem[Sentencia:] $\forall\ x \in NSS \Rightarrow     [0-9]{11}$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes NSSs:
+        \begin{itemize}
+			\item 14567892345
+			\item 98547928354
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes NSSs.
+		\begin{itemize}
+        	\item 8654935
+			\item 67435GTJ2
+        	
+    \end{itemize}
+\end{BussinesRule}

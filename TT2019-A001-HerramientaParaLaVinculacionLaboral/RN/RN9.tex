@@ -1,0 +1,29 @@
+%========================================================
+%========================================================
+% Regla del Negocio #9 - Contraseña
+%-----------------------------------------------
+\section{Regla de Negocio 9.- Contraseña valida}
+
+\begin{BussinesRule}{RN9}{Contraseña valida}
+	\BRitem[Tipo:] Regla de restricción (Validación).
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:] La contraseña debera cumplir con tener una longitud mínima de 8 caracteres y máxima de 16 caracteres, contener una letra mayúscula, una minúscula, un número y un caracter especial \cite{contra}.
+	\BRitem[Motivación:] Almacenar constraseñas seguras para los usuarios. 
+	\BRitem[Sentencia:] $\forall\ x \in Contraseña \Rightarrow     {(?=.+[0-9])(?=.+[a-z])(?=.+[A-Z])(?=.+[\#\$\&\%@])} {8-16}$
+	
+		\BRitem[Ejemplo positivo:] Contraseña valida:		
+        \begin{itemize}
+        	\item P4s\$word
+        \end{itemize}
+	
+	\BRitem[Ejemplo negativo:] Contraseña invaida:
+		\begin{itemize}
+        	\item Contraseña   
+			\end{itemize}
+\end{BussinesRule}

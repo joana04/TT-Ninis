@@ -1,0 +1,24 @@
+
+%========================================================
+% Regla del Negocio #5 - Adjuntar un archivo 
+%-----------------------------------------------
+\section{Regla de Negocio 5.- Adjuntar un archivo válido}
+
+\begin{BussinesRule}{RN5}{Adjuntar un archivo válido}
+%\label{BR:RN5}
+	\BRitem[Tipo:] Regla de integridad. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutive.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:] Al adjuntar un archivo este solo será recibido por el sistema si está en el formato PDF.
+	\BRitem[Motivación:] Evitar que se guarden en el sistema archivos que no requiera el sistema para el registro de becarios.
+	\BRitem[Sentencia:] 
+	   Se tiene a un becario que desea adjuntar sus documentos para registrarse en el sistema.
+	\BRitem[Ejemplo positivo:] El usuario adjunta su archivo de CURP ``CURP.pdf''.
+	
+	\BRitem[Ejemplo negativo:] El usuario adjunta su archivo de CURP ``CURP.xml''. 
+\end{BussinesRule}

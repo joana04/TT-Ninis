@@ -1,0 +1,32 @@
+%========================================================
+%========================================================
+% Regla del Negocio #10 - Número de becarios
+%-----------------------------------------------
+\section{Regla de Negocio 10.- Número telefónico (fijo o celular)}
+
+\begin{BussinesRule}{RN10}{Número telefónico (fijo o celular)}
+	\BRitem[Tipo:] Regla de restricción (Validación).
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:] El teléfono ingresado por el usuario puede ser fijo o celular.
+	\BRitem[Motivación:] Que los becarios ingresen números telefónicos validos. 
+	
+		\BRitem[Sentencia:] $\forall\ x \in N\'umero Tel\'efonico \Rightarrow     [0-9]{10}$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes Teléfonos:
+        \begin{itemize}
+			\item 5544678932
+			\item 5432146789
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes Teléfonos.
+		\begin{itemize}
+        	\item 34875116
+			\item 67435GTJ2
+        	
+    \end{itemize}
+
+\end{BussinesRule}

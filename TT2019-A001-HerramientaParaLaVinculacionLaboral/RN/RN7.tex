@@ -1,0 +1,33 @@
+%========================================================
+% Regla del Negocio #7 - Formato de CP
+%-----------------------------------------------
+\section{Regla de Negocio 7.- Formato de Código Postal}
+
+\begin{BussinesRule}{RN7}{Formato de Código Postal}
+	\BRitem[Tipo:] Regla estructural. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:]Clave numérica compuesta por cinco dígitos que identifica y ubica un área geográfica del país y la oficina postal que la sirve, para facilitar al correo, el encaminamiento, la distribución y el reparto de la materia postal \cite{CP}. Su denominación abreviada será C.P.
+
+	\BRitem[Motivación:] Registrar en el sistema CPs con estructuras correctas.
+	\BRitem[Sentencia:] $\forall\ x \in CP \Rightarrow   [0-9]{1}[1-9]{1}[0-9]{3}$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes CPs:
+        \begin{itemize}
+			\item 57630
+			\item 45678
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes CP:
+		\begin{itemize}
+        	\item 00564
+			\item O54t6
+        	
+    \end{itemize}
+\end{BussinesRule}
+
+
+

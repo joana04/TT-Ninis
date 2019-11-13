@@ -1,0 +1,44 @@
+%========================================================
+% Regla del Negocio #3 - Formato de CURP
+%-----------------------------------------------
+\section{Regla de Negocio 3.- Formato de CURPs}
+
+\begin{BussinesRule}{RN3}{Formato de CURP}
+	\BRitem[Tipo:] Regla estructural. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutive.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:] La Clave Única de Registro de Población (CURP) es un instrumento de registro que se asigna a todas las personas que viven en el territorio nacional, así como a los mexicanos que residen en el extranjero\cite{SG}. La instancia responsable de asignar la CURP y de expedir la Constancia respectiva es el Registro Nacional de Población.\\
+	El CURP está integrado con dieciocho elementos, representados por letras y números, que se generan a partir de los datos contenidos en el documento probatorio de tu identidad como acta de nacimiento, carta de naturalización o documento migratorio \cite{SG}, y que se refieren a:
+	        \begin{itemize}
+	            \item El primer apellido, segundo apellido y nombre de pila.
+	            \item La fecha de nacimiento.
+	            \item El sexo.
+	            \item La entidad federativa de nacimiento.
+	            \item Los dos últimos elementos de la CURP evitan la duplicidad de la Clave y garantizan su correcta integración.
+	           
+	        \end{itemize}
+	        
+	
+	\BRitem[Motivación:] Registrar en el sistema CURPs con estructuras correctas.
+	\BRitem[Sentencia:] $\forall\ x \in CURP \Rightarrow  [A-Z]{4}[0-9]{6}[H|M][A-Z]{5}[0-9]{2}$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes CURPs:
+        \begin{itemize}
+			\item OORE970504MMCSDS03
+			\item OORI061120MMCSDS19
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes CURPs.
+		\begin{itemize}
+        	\item OORE9705MMCSDS03
+			\item OORI061120M82SDSKL
+        	
+    \end{itemize}
+\end{BussinesRule}
+
+
+
+

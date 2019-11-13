@@ -1,0 +1,33 @@
+%========================================================
+% Regla del Negocio #6 - Tamaño de archivo incorrecto
+%-----------------------------------------------
+\section{Regla de Negocio 6.- Tamaño de archivo incorrecto}
+\begin{BussinesRule}{RN6}{Tamaño de archivo incorrecto}
+
+	\BRitem[Tipo:] Regla de integridad referencial o estructural. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutive.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:]	Los archivos adjuntos deben tener un tamaño límite de 5 MB. 
+	\BRitem[Motivación:] Evitar archivos de peso excesivo que puedan alentar el funcionamiento del sistema.
+	\BRitem[Sentencia:]
+	    Sea x un archivo.jpg y n el tamaño que puede tener el archivo x, entonces n es menor o igual a 3 MB.
+
+	\BRitem[Ejemplo positivo:] Archivo con tamaño dentro del rango permitido:		
+        \begin{itemize}
+        	\item Archivo.jpg (3 MB)
+			\item Archivo2.jpg (1.5 MB)
+        \end{itemize}
+	
+	\BRitem[Ejemplo negativo:] Archivo con tamaño excedente del rango permitido:
+		\begin{itemize}
+        	\item Archivo.jpg (176 MB)
+			\item Archivo2.jpg (20 MB)
+        \end{itemize}
+	%\BRitem[Referenciado por:] \hyperlink{CUCE3.2}{CUCE3.2}, \hyperlink{CUCE3.3}{CUCE3.3}.
+\end{BussinesRule}
+

@@ -1,0 +1,49 @@
+%========================================================
+% Regla del Negocio #8 - Formato de RFC
+%-----------------------------------------------
+\section{Regla de Negocio 8.- Formato de Registro Federal de Contribuyentes}
+
+\begin{BussinesRule}{RN8}{Formato de Registro Federal de Contribuyentes }
+	\BRitem[Tipo:] Regla estructural. 
+				% Otras opciones para tipo: 
+				% - Regla de integridad referencial o estructural. 
+				% - Regla de operación, (calcular o determinar un valor.).
+				% - Regla de inferencia de un hecho.
+	\BRitem[Clase:] Habilitadora. 
+				% Otras opciones para clase: Habilitadora, Cronometrada, Ejecutiva.
+	\BRitem[Nivel:] Control. % Otras opciones para nivel: Control, Influencia.
+	\BRitem[Descripción:]El RFC es una clave que identifica como contribuyentes a las personas físicas o morales en México para controlar el pago de impuestos frente al SAT, el Servicio de Administración Tributaria \cite{RFC}. Su denominación abreviada será RFC y esiten dos tipos, el RC para personas físicas y para personas morales o empresas.
+	\begin{itemize}
+	            \item Personas físicas:
+	            \begin{itemize}
+	                \item Primera letra y primera vocal interna del primer apellido
+                    \item Primera letra del segundo apellido
+                    \item Primera letra del primer nombre del contribuyente
+                    \item Fecha de nacimiento en formato aa/mm/dd
+                    \item Homoclave calculada con un algoritmo de público conocimiento, con dígito verificador para evitar repeticiones (asignado por el SAT)
+	            \end{itemize}
+	            \item Personas morales:
+	            \begin{itemize}
+	                \item Si el nombre de la empresa tiene tres palabras, usar la primera letra de cada una. Si tiene dos, usar la primera de la primer palabra, y las primeras dos de la segunda. Si tiene una, usar sus primeras tres letras.
+                \item Fecha de constitución de la empresa en formato aa/mm/dd
+                \item Homoclave (asignada por el SAT)
+	            \end{itemize}
+	        \end{itemize}
+
+	\BRitem[Motivación:] Registrar en el sistema RFCs con estructuras correctas.
+	\BRitem[Sentencia:]  $\forall\ x \in RFC \Rightarrow   ([A-Z,\tilde{N},\&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z0-9]{3})$
+	\BRitem[Ejemplo positivo:] Cumplen la regla de negocio los siguientes RFCs:
+        \begin{itemize}
+			\item GOAP780710RH7
+			\item IAT030120E60
+        \end{itemize}
+	\BRitem[Ejemplo negativo:] No cumplen la regla de negocio los siguientes RFCs.
+		\begin{itemize}
+        	\item G4Pu345670GGT
+			\item IA6030150E60
+        	
+    \end{itemize}
+\end{BussinesRule}
+
+
+
